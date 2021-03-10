@@ -8,6 +8,19 @@ namespace viajes
         // Para obtener más información sobre las uniones, visite https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+
+            bundles.Add(new Bundle("~/Script/Bundles").Include(
+            "~/bundles/inline.*",
+            "~/bundles/polyfills.*",
+            "~/bundles/scripts.*",
+            "~/bundles/vendor.*",
+            "~/bundles/runtime.*",
+            "~/bundles/zone.*",
+            "~/bundles/main.*"));
+
+
+            bundles.Add(new StyleBundle("~/Content/styles").Include("~/Bundles/styles.*"));
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
