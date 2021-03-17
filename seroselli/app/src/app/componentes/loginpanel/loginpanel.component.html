@@ -1,27 +1,22 @@
 <div class="login-panel">
-<div class="oscurecer-fondo"></div>
-
-   <div class="panel">
+  <div class="oscurecer-fondo"></div>
+  <div class="panel">
     <div class="card card-body" style="background-color: rgb(240, 248, 255);">
-      <h5>Iniciar sesión</h5>
-      <form action="/dash" method="get">
-  
-        <div class="mb-3 row">
-          <label class="form-label">Correo electrónico</label>
-          <input type="text" name="email" class="form-control" placeholder="nombre@ejemplo.com">
-        </div>
+        <h5>Iniciar sesión</h5>
+        <form class="form-group" #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
         
-        <div class="mb-3 row">
-          <label for="epassword"  class="form-label">Contraseña</label>
+          <label class="form-label">Correo electrónico</label>
+          <input name="email" #nombre="ngModel" [(ngModel)]="service.formData.uemail" class="form-control" placeholder="nombre@ejemplo.com">
+          <label class="form-label">Contraseña</label>
           <input type="password" name="pass" class="form-control" id="epassword" placeholder="********">
-        </div>
-  
-        <button class="btn btn-outline-info" type="submit" >Acceder</button>
-        </form>
-    </div>
-</div>
+          <button class="btn btn-outline-info" type="submit" >Acceder</button>
+          <a href="/registrarse" class="link-primary">Registrarse</a>
+        </form>        
+    </div> 
 
 
+
+  </div>
 
 
 

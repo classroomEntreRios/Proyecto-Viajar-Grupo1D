@@ -11,19 +11,26 @@ import { PaginasModule } from './paginas/paginas.module';
 
 import { UsuariosService } from './services/usuarios.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './paginas/register/register.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    LoginPanelComponent
+    LoginPanelComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     PaginasModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [UsuariosService],
   bootstrap: [AppComponent]

@@ -67,7 +67,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/common */ "ofXK");
 /* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home/home.component */ "n3/6");
 /* harmony import */ var _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dashboard/dashboard.component */ "xMWz");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _terminos_terminos_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./terminos/terminos.component */ "zUnn");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
 
 
 
@@ -75,11 +77,11 @@ __webpack_require__.r(__webpack_exports__);
 class PaginasModule {
 }
 PaginasModule.ɵfac = function PaginasModule_Factory(t) { return new (t || PaginasModule)(); };
-PaginasModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineNgModule"]({ type: PaginasModule });
-PaginasModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineInjector"]({ imports: [[
+PaginasModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineNgModule"]({ type: PaginasModule });
+PaginasModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineInjector"]({ imports: [[
             _angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"]
         ]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵsetNgModuleScope"](PaginasModule, { declarations: [_home_home_component__WEBPACK_IMPORTED_MODULE_1__["HomeComponent"], _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_2__["DashboardComponent"]], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"]], exports: [_home_home_component__WEBPACK_IMPORTED_MODULE_1__["HomeComponent"]] }); })();
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵsetNgModuleScope"](PaginasModule, { declarations: [_home_home_component__WEBPACK_IMPORTED_MODULE_1__["HomeComponent"], _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_2__["DashboardComponent"], _terminos_terminos_component__WEBPACK_IMPORTED_MODULE_3__["TerminosComponent"]], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"]], exports: [_home_home_component__WEBPACK_IMPORTED_MODULE_1__["HomeComponent"]] }); })();
 
 
 /***/ }),
@@ -112,6 +114,167 @@ const environment = {
 
 /***/ }),
 
+/***/ "BL4B":
+/*!********************************************************!*\
+  !*** ./src/app/paginas/register/register.component.ts ***!
+  \********************************************************/
+/*! exports provided: RegisterComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterComponent", function() { return RegisterComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _services_usuarios_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../services/usuarios.service */ "ESM5");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+
+
+
+class RegisterComponent {
+    constructor(service) {
+        this.service = service;
+        this.pass = "password";
+    }
+    ngOnInit() {
+        this.resetForm();
+    }
+    resetForm(form) {
+        if (form != null) {
+            form.resetForm();
+        }
+        this.service.formData = {
+            nombre: '',
+            apellido: '',
+            uemail: '',
+            epassword: ''
+        };
+    }
+    onSubmit(form) {
+        this.insertRecord(form);
+    }
+    insertRecord(form) {
+        this.service.postUsuario(form.value).subscribe(res => {
+            this.resetForm(form);
+        });
+    }
+    verPass() {
+        if (this.pass == "password")
+            this.pass = "text";
+        else
+            this.ocultarPass();
+    }
+    ocultarPass() {
+        this.pass = "password";
+    }
+}
+RegisterComponent.ɵfac = function RegisterComponent_Factory(t) { return new (t || RegisterComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_usuarios_service__WEBPACK_IMPORTED_MODULE_1__["UsuariosService"])); };
+RegisterComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: RegisterComponent, selectors: [["app-register"]], decls: 39, vars: 9, consts: [[1, "card", "card-body", 2, "background-color", "rgb(171, 218, 213)", "z-index", "1"], [1, "container", "pb-auto", 2, "padding-left", "30%", "padding-right", "30%", "padding-bottom", "10%"], ["autocomplete", "off", 1, "form-group", 3, "submit"], ["form", "ngForm"], [1, "form-label"], ["name", "nombre", "placeholder", "Juan", 1, "form-control", 3, "ngModel", "ngModelChange"], ["nombre", "ngModel"], ["name", "apellido", "placeholder", "Perez", 1, "form-control", 3, "ngModel", "ngModelChange"], ["apellido", "ngModel"], ["type", "email", "name", "uemail", "placeholder", "juanperez@correo.com", 1, "form-control", 3, "ngModel", "ngModelChange"], ["uemail", "ngModel"], [1, "input-group", "mb-3"], ["name", "password", "placeholder", "********", 1, "form-control", 3, "type", "ngModel", "ngModelChange"], ["epassword", "ngModel"], ["type", "button", 1, "verPass", 3, "click"], [1, "form-check"], ["type", "checkbox", "value", "", "id", "flexCheckChecked", "checked", "", 1, "form-check-input"], ["for", "flexCheckChecked", 1, "form-check-label"], ["href", "/terminos", 1, "link-primary"], [1, "form-group"], ["type", "submit", 1, "btn", "btn-outline-info"]], template: function RegisterComponent_Template(rf, ctx) { if (rf & 1) {
+        const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h5");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Registrarse");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "hr");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "form", 2, 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function RegisterComponent_Template_form_submit_6_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r5); const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](7); return ctx.onSubmit(_r0); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "label", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Nombre");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "input", 5, 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function RegisterComponent_Template_input_ngModelChange_10_listener($event) { return ctx.service.formData.nombre = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](12, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "label", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "Apellido");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "input", 7, 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function RegisterComponent_Template_input_ngModelChange_15_listener($event) { return ctx.service.formData.apellido = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](17, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "label", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](19, "Correo Electr\u00F3nico");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "input", 9, 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function RegisterComponent_Template_input_ngModelChange_20_listener($event) { return ctx.service.formData.uemail = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](22, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "label", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](24, "Contrase\u00F1a");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "div", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "input", 12, 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function RegisterComponent_Template_input_ngModelChange_26_listener($event) { return ctx.service.formData.epassword = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "button", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function RegisterComponent_Template_button_click_28_listener() { return ctx.verPass(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "div", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](30, "input", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "label", 17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "a", 18);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](33, "He le\u00EDdo los t\u00E9rminos y condiciones");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "div", 19);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](35, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "button", 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](37, "Registrar");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](38);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.service.formData.nombre);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.service.formData.apellido);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.service.formData.uemail);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("type", ctx.pass);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.service.formData.epassword);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate4"](" ", ctx.service.formData.nombre, " ", ctx.service.formData.apellido, " ", ctx.service.formData.uemail, " ", ctx.service.formData.epassword, " ");
+    } }, directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgForm"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgModel"]], styles: ["button.verPass[_ngcontent-%COMP%]{\r\n    background-color: white ;\r\n    margin: 0px;\r\n    padding: auto;\r\n    border-radius: 4px;\r\n    border-color: transparent;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlZ2lzdGVyLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUNBO0lBQ0ksd0JBQXdCO0lBQ3hCLFdBQVc7SUFDWCxhQUFhO0lBQ2Isa0JBQWtCO0lBQ2xCLHlCQUF5QjtBQUM3QiIsImZpbGUiOiJyZWdpc3Rlci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXHJcbmJ1dHRvbi52ZXJQYXNze1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGUgO1xyXG4gICAgbWFyZ2luOiAwcHg7XHJcbiAgICBwYWRkaW5nOiBhdXRvO1xyXG4gICAgYm9yZGVyLXJhZGl1czogNHB4O1xyXG4gICAgYm9yZGVyLWNvbG9yOiB0cmFuc3BhcmVudDtcclxufVxyXG4iXX0= */"] });
+
+
+/***/ }),
+
+/***/ "ESM5":
+/*!**********************************************!*\
+  !*** ./src/app/services/usuarios.service.ts ***!
+  \**********************************************/
+/*! exports provided: UsuariosService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UsuariosService", function() { return UsuariosService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
+
+
+class UsuariosService {
+    constructor(http) {
+        this.http = http;
+        this.rootURL = 'https://localhost:44330/';
+    }
+    postUsuario(formData) {
+        return this.http.post(this.rootURL + 'api/usuarios', formData);
+    }
+}
+UsuariosService.ɵfac = function UsuariosService_Factory(t) { return new (t || UsuariosService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };
+UsuariosService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: UsuariosService, factory: UsuariosService.ɵfac, providedIn: 'root' });
+
+
+/***/ }),
+
 /***/ "NM3I":
 /*!********************************************************!*\
   !*** ./src/app/componentes/footer/footer.component.ts ***!
@@ -130,7 +293,7 @@ class FooterComponent {
     }
 }
 FooterComponent.ɵfac = function FooterComponent_Factory(t) { return new (t || FooterComponent)(); };
-FooterComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: FooterComponent, selectors: [["app-footer"]], decls: 9, vars: 0, consts: [[1, "container-fluid", "footer", 2, "background-color", "rgba(192, 192, 192, 0.39)", "width", "100%", "height", "auto"], [1, "mx-auto", 2, "width", "20%"], [2, "font-family", "cursive"], [2, "font-family", "cursive", "color", "red"]], template: function FooterComponent_Template(rf, ctx) { if (rf & 1) {
+FooterComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: FooterComponent, selectors: [["app-footer"]], decls: 9, vars: 0, consts: [[1, "navbar-fixed-bottom", "footer"], [1, "mx-auto", 2, "width", "20%"], [2, "font-family", "cursive"], [2, "font-family", "cursive", "color", "red"]], template: function FooterComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "hr");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 1);
@@ -144,7 +307,7 @@ FooterComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCo
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](8, "hr");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    } }, styles: [".footer[_ngcontent-%COMP%]{\r\n    position:fixed;\r\n    bottom:0;\r\n    width:100%;\r\n    text-align:center;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZvb3Rlci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksY0FBYztJQUNkLFFBQVE7SUFDUixVQUFVO0lBQ1YsaUJBQWlCO0FBQ3JCIiwiZmlsZSI6ImZvb3Rlci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmZvb3RlcntcclxuICAgIHBvc2l0aW9uOmZpeGVkO1xyXG4gICAgYm90dG9tOjA7XHJcbiAgICB3aWR0aDoxMDAlO1xyXG4gICAgdGV4dC1hbGlnbjpjZW50ZXI7XHJcbn0iXX0= */"] });
+    } }, styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJmb290ZXIuY29tcG9uZW50LmNzcyJ9 */"] });
 
 
 /***/ }),
@@ -160,14 +323,41 @@ FooterComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCo
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPanelComponent", function() { return LoginPanelComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _services_usuarios_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../services/usuarios.service */ "ESM5");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+
+
 
 class LoginPanelComponent {
-    constructor() { }
+    constructor(service) {
+        this.service = service;
+    }
     ngOnInit() {
+        this.resetForm();
+    }
+    resetForm(form) {
+        if (form != null) {
+            form.resetForm();
+        }
+        this.service.formData = {
+            nombre: '',
+            apellido: '',
+            uemail: '',
+            epassword: ''
+        };
+    }
+    onSubmit(form) {
+        this.insertRecord(form);
+    }
+    insertRecord(form) {
+        this.service.postUsuario(form.value).subscribe(res => {
+            this.resetForm(form);
+        });
     }
 }
-LoginPanelComponent.ɵfac = function LoginPanelComponent_Factory(t) { return new (t || LoginPanelComponent)(); };
-LoginPanelComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: LoginPanelComponent, selectors: [["app-login-panel"]], decls: 17, vars: 0, consts: [[1, "login-panel"], [1, "oscurecer-fondo"], [1, "panel"], [1, "card", "card-body", 2, "background-color", "rgb(240, 248, 255)"], ["action", "/login", "method", "post"], [1, "mb-3", "row"], [1, "form-label"], ["type", "text", "name", "email", "placeholder", "nombre@ejemplo.com", 1, "form-control"], ["for", "epassword", 1, "form-label"], ["type", "password", "name", "pass", "id", "epassword", "placeholder", "********", 1, "form-control"], ["type", "submit", 1, "btn", "btn-outline-info"]], template: function LoginPanelComponent_Template(rf, ctx) { if (rf & 1) {
+LoginPanelComponent.ɵfac = function LoginPanelComponent_Factory(t) { return new (t || LoginPanelComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_usuarios_service__WEBPACK_IMPORTED_MODULE_1__["UsuariosService"])); };
+LoginPanelComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: LoginPanelComponent, selectors: [["app-login-panel"]], decls: 19, vars: 1, consts: [[1, "login-panel"], [1, "oscurecer-fondo"], [1, "panel"], [1, "card", "card-body", 2, "background-color", "rgb(240, 248, 255)"], ["autocomplete", "off", 1, "form-group", 3, "submit"], ["form", "ngForm"], [1, "form-label"], ["name", "email", "placeholder", "nombre@ejemplo.com", 1, "form-control", 3, "ngModel", "ngModelChange"], ["nombre", "ngModel"], ["type", "password", "name", "pass", "id", "epassword", "placeholder", "********", 1, "form-control"], ["type", "submit", 1, "btn", "btn-outline-info"], ["href", "/registrarse", 1, "link-primary"]], template: function LoginPanelComponent_Template(rf, ctx) { if (rf & 1) {
+        const _r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
@@ -175,27 +365,32 @@ LoginPanelComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "h5");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "Iniciar sesi\u00F3n");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "form", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "form", 4, 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function LoginPanelComponent_Template_form_submit_6_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r2); const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](7); return ctx.onSubmit(_r0); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "label", 6);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Correo electr\u00F3nico");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](10, "input", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "input", 7, 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function LoginPanelComponent_Template_input_ngModelChange_10_listener($event) { return ctx.service.formData.uemail = $event; });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "label", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "label", 6);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "Contrase\u00F1a");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](14, "input", 9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "button", 10);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](16, "Acceder");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "a", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](18, "Registrarse");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    } }, styles: ["div.oscurecer-fondo[_ngcontent-%COMP%]{\r\n    display: block;\r\n    position: absolute;\r\n    width: 100%;\r\n    height: 1400px;\r\n    background-color: rgba(0, 0, 0, 0.671);\r\n    z-index: 0;\r\n}\r\n\r\ndiv.panel[_ngcontent-%COMP%]{\r\n    position: absolute;\r\n    width: 100%;\r\n    margin-top: 0px;\r\n    padding-left: 80%;\r\n    left: 0px; \r\n    z-index: 1;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxvZ2lucGFuZWwuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGNBQWM7SUFDZCxrQkFBa0I7SUFDbEIsV0FBVztJQUNYLGNBQWM7SUFDZCxzQ0FBc0M7SUFDdEMsVUFBVTtBQUNkOztBQUVBO0lBQ0ksa0JBQWtCO0lBQ2xCLFdBQVc7SUFDWCxlQUFlO0lBQ2YsaUJBQWlCO0lBQ2pCLFNBQVM7SUFDVCxVQUFVO0FBQ2QiLCJmaWxlIjoibG9naW5wYW5lbC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiZGl2Lm9zY3VyZWNlci1mb25kb3tcclxuICAgIGRpc3BsYXk6IGJsb2NrO1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBoZWlnaHQ6IDE0MDBweDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMCwgMCwgMCwgMC42NzEpO1xyXG4gICAgei1pbmRleDogMDtcclxufVxyXG5cclxuZGl2LnBhbmVse1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBtYXJnaW4tdG9wOiAwcHg7XHJcbiAgICBwYWRkaW5nLWxlZnQ6IDgwJTtcclxuICAgIGxlZnQ6IDBweDsgXHJcbiAgICB6LWluZGV4OiAxO1xyXG59XHJcblxyXG4iXX0= */"] });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.service.formData.uemail);
+    } }, directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgForm"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgModel"]], styles: ["div.oscurecer-fondo[_ngcontent-%COMP%]{\r\n    display: block;\r\n    position: absolute;\r\n    left: 0;\r\n    margin: 0%;\r\n    padding: 0%;\r\n    width: 100%;\r\n    min-height: 100%;\r\n    background-color: rgba(0, 0, 0, 0.671);\r\n    z-index: 0;\r\n}\r\n\r\n.login-panel[_ngcontent-%COMP%]{\r\n    position: absolute;\r\n    left: 0;\r\n    margin: 0%;\r\n    padding: 0%;\r\n    width: 100%;\r\n    min-height: 100%;\r\n}\r\n\r\ndiv.panel[_ngcontent-%COMP%]{\r\n    position: absolute;\r\n    width: 100%;\r\n    margin-top: 0px;\r\n    padding-left: 80%;\r\n    left: 0px; \r\n    z-index: 1;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxvZ2lucGFuZWwuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGNBQWM7SUFDZCxrQkFBa0I7SUFDbEIsT0FBTztJQUNQLFVBQVU7SUFDVixXQUFXO0lBQ1gsV0FBVztJQUNYLGdCQUFnQjtJQUNoQixzQ0FBc0M7SUFDdEMsVUFBVTtBQUNkOztBQUVBO0lBQ0ksa0JBQWtCO0lBQ2xCLE9BQU87SUFDUCxVQUFVO0lBQ1YsV0FBVztJQUNYLFdBQVc7SUFDWCxnQkFBZ0I7QUFDcEI7O0FBQ0E7SUFDSSxrQkFBa0I7SUFDbEIsV0FBVztJQUNYLGVBQWU7SUFDZixpQkFBaUI7SUFDakIsU0FBUztJQUNULFVBQVU7QUFDZCIsImZpbGUiOiJsb2dpbnBhbmVsLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJkaXYub3NjdXJlY2VyLWZvbmRve1xyXG4gICAgZGlzcGxheTogYmxvY2s7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICBsZWZ0OiAwO1xyXG4gICAgbWFyZ2luOiAwJTtcclxuICAgIHBhZGRpbmc6IDAlO1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBtaW4taGVpZ2h0OiAxMDAlO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgwLCAwLCAwLCAwLjY3MSk7XHJcbiAgICB6LWluZGV4OiAwO1xyXG59XHJcblxyXG4ubG9naW4tcGFuZWx7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICBsZWZ0OiAwO1xyXG4gICAgbWFyZ2luOiAwJTtcclxuICAgIHBhZGRpbmc6IDAlO1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBtaW4taGVpZ2h0OiAxMDAlO1xyXG59XHJcbmRpdi5wYW5lbHtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgbWFyZ2luLXRvcDogMHB4O1xyXG4gICAgcGFkZGluZy1sZWZ0OiA4MCU7XHJcbiAgICBsZWZ0OiAwcHg7IFxyXG4gICAgei1pbmRleDogMTtcclxufVxyXG5cclxuIl19 */"] });
 
 
 /***/ }),
@@ -221,19 +416,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class AppComponent {
-    constructor() {
-        this.title = 'Viajar';
-    }
 }
 AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(); };
-AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 5, vars: 0, consts: [[2, "z-index", "2", "position", "static", "top", "0px"], [2, "z-index", "2!important"], [1, "container", "mt-3", 2, "z-index", "0"], [2, "z-index", "1"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
+AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 6, vars: 0, consts: [[2, "z-index", "2", "position", "static", "top", "0px"], [2, "z-index", "2!important"], [1, "pagina"], [1, "container", 2, "z-index", "0"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-navbar", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "app-login-panel", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "router-outlet");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "router-outlet");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "app-footer", 3);
-    } }, directives: [_componentes_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_1__["NavbarComponent"], _componentes_loginpanel_loginpanel_component__WEBPACK_IMPORTED_MODULE_2__["LoginPanelComponent"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterOutlet"], _componentes_footer_footer_component__WEBPACK_IMPORTED_MODULE_4__["FooterComponent"]], styles: ["app-login-panel[_ngcontent-%COMP%] {\r\n    display:none;\r\n}\r\n\r\ndiv.div1[_ngcontent-%COMP%]{\r\n    display: none;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksWUFBWTtBQUNoQjs7QUFFQTtJQUNJLGFBQWE7QUFDakIiLCJmaWxlIjoiYXBwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJhcHAtbG9naW4tcGFuZWwge1xyXG4gICAgZGlzcGxheTpub25lO1xyXG59XHJcblxyXG5kaXYuZGl2MXtcclxuICAgIGRpc3BsYXk6IG5vbmU7XHJcbn0iXX0= */"] });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](5, "app-footer");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } }, directives: [_componentes_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_1__["NavbarComponent"], _componentes_loginpanel_loginpanel_component__WEBPACK_IMPORTED_MODULE_2__["LoginPanelComponent"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterOutlet"], _componentes_footer_footer_component__WEBPACK_IMPORTED_MODULE_4__["FooterComponent"]], styles: ["app-login-panel[_ngcontent-%COMP%] {\r\n    display:none;\r\n}\r\n\r\n\r\n\r\ndiv.pagina[_ngcontent-%COMP%]{\r\n    width: 100%;\r\n    height: auto;\r\n    margin-bottom: 0px;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksWUFBWTtBQUNoQjs7OztBQUlBO0lBQ0ksV0FBVztJQUNYLFlBQVk7SUFDWixrQkFBa0I7QUFDdEIiLCJmaWxlIjoiYXBwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJhcHAtbG9naW4tcGFuZWwge1xyXG4gICAgZGlzcGxheTpub25lO1xyXG59XHJcblxyXG5cclxuXHJcbmRpdi5wYWdpbmF7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGhlaWdodDogYXV0bztcclxuICAgIG1hcmdpbi1ib3R0b206IDBweDtcclxufSJdfQ== */"] });
 
 
 /***/ }),
@@ -255,7 +449,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _componentes_loginpanel_loginpanel_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./componentes/loginpanel/loginpanel.component */ "NaAd");
 /* harmony import */ var _componentes_footer_footer_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./componentes/footer/footer.component */ "NM3I");
 /* harmony import */ var _paginas_paginas_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./paginas/paginas.module */ "1lCd");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _services_usuarios_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./services/usuarios.service */ "ESM5");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var _paginas_register_register_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./paginas/register/register.component */ "BL4B");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
+
+
+
 
 
 
@@ -267,18 +469,25 @@ __webpack_require__.r(__webpack_exports__);
 class AppModule {
 }
 AppModule.ɵfac = function AppModule_Factory(t) { return new (t || AppModule)(); };
-AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]] });
-AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵdefineInjector"]({ providers: [], imports: [[
+AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_11__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]] });
+AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_11__["ɵɵdefineInjector"]({ providers: [_services_usuarios_service__WEBPACK_IMPORTED_MODULE_7__["UsuariosService"]], imports: [[
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
             _app_routing_module__WEBPACK_IMPORTED_MODULE_1__["AppRoutingModule"],
-            _paginas_paginas_module__WEBPACK_IMPORTED_MODULE_6__["PaginasModule"]
+            _paginas_paginas_module__WEBPACK_IMPORTED_MODULE_6__["PaginasModule"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpClientModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_9__["ReactiveFormsModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_9__["FormsModule"]
         ]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"],
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_11__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"],
         _componentes_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_3__["NavbarComponent"],
         _componentes_footer_footer_component__WEBPACK_IMPORTED_MODULE_5__["FooterComponent"],
-        _componentes_loginpanel_loginpanel_component__WEBPACK_IMPORTED_MODULE_4__["LoginPanelComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
+        _componentes_loginpanel_loginpanel_component__WEBPACK_IMPORTED_MODULE_4__["LoginPanelComponent"],
+        _paginas_register_register_component__WEBPACK_IMPORTED_MODULE_10__["RegisterComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
         _app_routing_module__WEBPACK_IMPORTED_MODULE_1__["AppRoutingModule"],
-        _paginas_paginas_module__WEBPACK_IMPORTED_MODULE_6__["PaginasModule"]] }); })();
+        _paginas_paginas_module__WEBPACK_IMPORTED_MODULE_6__["PaginasModule"],
+        _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpClientModule"],
+        _angular_forms__WEBPACK_IMPORTED_MODULE_9__["ReactiveFormsModule"],
+        _angular_forms__WEBPACK_IMPORTED_MODULE_9__["FormsModule"]] }); })();
 
 
 /***/ }),
@@ -332,26 +541,32 @@ HomeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComp
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppRoutingModule", function() { return AppRoutingModule; });
-/* harmony import */ var _paginas_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./paginas/dashboard/dashboard.component */ "xMWz");
-/* harmony import */ var _paginas_home_home_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./paginas/home/home.component */ "n3/6");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "tyNb");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _paginas_terminos_terminos_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./paginas/terminos/terminos.component */ "zUnn");
+/* harmony import */ var _paginas_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./paginas/dashboard/dashboard.component */ "xMWz");
+/* harmony import */ var _paginas_home_home_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./paginas/home/home.component */ "n3/6");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _paginas_register_register_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./paginas/register/register.component */ "BL4B");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
+
 
 
 
 
 
 const routes = [
-    { path: 'home', component: _paginas_home_home_component__WEBPACK_IMPORTED_MODULE_1__["HomeComponent"] },
-    { path: 'dash', component: _paginas_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_0__["DashboardComponent"] },
+    { path: 'home', component: _paginas_home_home_component__WEBPACK_IMPORTED_MODULE_2__["HomeComponent"] },
+    { path: 'dash', component: _paginas_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_1__["DashboardComponent"] },
+    { path: 'registrarse', component: _paginas_register_register_component__WEBPACK_IMPORTED_MODULE_4__["RegisterComponent"] },
+    { path: 'terminos', component: _paginas_terminos_terminos_component__WEBPACK_IMPORTED_MODULE_0__["TerminosComponent"] },
     { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];
 class AppRoutingModule {
 }
 AppRoutingModule.ɵfac = function AppRoutingModule_Factory(t) { return new (t || AppRoutingModule)(); };
-AppRoutingModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineNgModule"]({ type: AppRoutingModule });
-AppRoutingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineInjector"]({ imports: [[_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes)], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵsetNgModuleScope"](AppRoutingModule, { imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]], exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]] }); })();
+AppRoutingModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdefineNgModule"]({ type: AppRoutingModule });
+AppRoutingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdefineInjector"]({ imports: [[_angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forRoot(routes)], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵsetNgModuleScope"](AppRoutingModule, { imports: [_angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"]], exports: [_angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"]] }); })();
 
 
 /***/ }),
@@ -405,6 +620,160 @@ if (_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].produc
 }
 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["platformBrowser"]().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_2__["AppModule"])
     .catch(err => console.error(err));
+
+
+/***/ }),
+
+/***/ "zUnn":
+/*!********************************************************!*\
+  !*** ./src/app/paginas/terminos/terminos.component.ts ***!
+  \********************************************************/
+/*! exports provided: TerminosComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TerminosComponent", function() { return TerminosComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
+class TerminosComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+}
+TerminosComponent.ɵfac = function TerminosComponent_Factory(t) { return new (t || TerminosComponent)(); };
+TerminosComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: TerminosComponent, selectors: [["app-terminos"]], decls: 90, vars: 0, consts: [[1, "container-fluid", "contenido"], [1, "row"], [1, "col-md-12"], [1, "mt-4"], [1, "row", "my-5"], ["align", "center", 2, "text-align", "center", "margin", "0cm 0cm 0.0001pt"]], template: function TerminosComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "h1", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "Condiciones Generales de Contrataci\u00F3n");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "p", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "\u00A0");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "b");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "NUESTRA EMPRESA OPERA BAJO LAS CONDICIONES GENERALES DE LA SIGUIENTE RESOLUCION N\u00B0 256/00 DE LA SECRETARIA DE ESTADO DE TURISMO.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](15, "BUENOS AIRES, 30 JUN 2000");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](16, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](17, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](18, "\nVISTO la Ley N\u00B0 18.829, su Decreto reglamentario N\u00B0 2182 de fecha 19 de abril de 1972, y las disposiciones de la Convenci\u00F3n Internacional relativa al Contrato de Viaje ratificada por la Ley 19.918, y");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](20, "CONSIDERANDO:");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](21, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22, "\nQue la normativa mencionada regula, entre otros aspectos, la relaci\u00F3n de los agentes de viajes con los usuarios.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](23, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](24, "\nQue es conveniente contribuir a una informaci\u00F3n m\u00E1s amplia y uniforme sobre los derechos y obligaciones que vinculan a las partes en el contrato de viaje.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](25, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "\nQue la elaboraci\u00F3n de un modelo uniforme sobre las condiciones generales del contrato tur\u00EDstico tiende a evitar o limitar controversias o conflictos interpretativos.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](27, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](28, "\nQue las facultades para el dictado del acto emergen de las normas citadas y disposiciones expresadas de la Ley N\u00B0 14.574 t.o. 1987, de su Decreto reglamentario N\u00B0 9468/61 y del Decreto N\u00B0 1407/96.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](30, "Por ello, EL SECRETARIO DE TURISMO DE LA PRESIDENCIA DE LA NACION RESUELVE:");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](32, "ARTICULO 1\u00B0.- Aprobar el modelo de condiciones generales de contrataci\u00F3n de servicios tur\u00EDsticos que se agrega como ANEXO I a la presente. El modelo aprobado podr\u00E1 ser adaptado por la secretaria de turismo para casos particulares a pedido de las agencias de viaje cuando las modalidades operativas as\u00ED lo justifiquen.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](34, "ARTICULO 2\u00B0.- La entrega al pasajero de las condiciones generales de la contrataci\u00F3n impresas debe efectuarse en el primer documento de viaje que emita la agencia.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](36, "ARTICULO 3\u00B0.- Las condiciones generales de la contrataci\u00F3n, conjuntamente con el detalle de los servicios a prestar, los billetes del transporte, las \u00F3rdenes de servicios, las facturas emitidas y todo otro documento que contenga especificaciones sobre el viaje, conformar\u00E1n el contrato de viaje.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](38, "ARTICULO 4\u00B0.- Las condiciones generales de la contrataci\u00F3n deber\u00E1n ser firmadas por un empleado autorizado de la agencia. La firma podr\u00E1 ser suplida por un sello que contenga la denominaci\u00F3n comercial y el n\u00FAmero de legajo de la agencia de viajes.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](39, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](40, "ARTICULO 5\u00B0.- En el caso de venta exclusiva por medios electr\u00F3nicos o sistemas de reservas, deber\u00E1 preverse el conocimiento y aceptaci\u00F3n fehaciente por parte de los pasajeros de las condiciones generales de contrataci\u00F3n aprobadas en el art\u00EDculo 1\u00B0 de la presente, con anterioridad a la reserva.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](41, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](42, "ARTICULO 6\u00B0.- La sola venta de billetes de pasajes de transporte regular y el alquiler de aeronaves o automotores quedan excluidos del r\u00E9gimen y no requieren entrega y suscripci\u00F3n de las condiciones generales.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](43, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](44, "ARTICULO 7\u00B0.- Toda infracci\u00F3n a las disposiciones de la presente ser\u00E1 sancionada conforme las determinaciones del art\u00EDculo 10 de la Ley N\u00B0 18.829.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](45, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](46, "ARTICULO 8\u00B0.- Las disposiciones de la presente entrar\u00E1n en vigencia a partir del 1\u00B0 de septiembre de 2000.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](47, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](48, "ARTICULO 9\u00B0.- Reg\u00EDstrese, comun\u00EDquese, publ\u00EDquese, d\u00E9se a la Direcci\u00F3n Nacional del Registro Oficial y arch\u00EDvese. Firmado: Ing. Hern\u00E1n Lombardi. Secretario de Turismo. Presidencia de la Naci\u00F3n.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](49, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](50, "ANEXO I");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](52, "CONDICIONES GENERALES DEL CONTRATO DE SERVICIOS TURISTICOS");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](53, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](54, "a. SOLICITUDES Y PAGOS:");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](55, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](56, "\n1) El precio y/o reservaci\u00F3n de los servicios que componen el tour quedan sujetos a modificaciones sin previo aviso cuando se produzca una alteraci\u00F3n en los servicios, modificaciones en los costos o en los tipos de cambio previstos, por causas no imputables a las partes.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](57, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](58, "2) Todos los importes pagados antes de la confirmaci\u00F3n definitiva de los servicios son percibidos en concepto de reserva. La confirmaci\u00F3n definitiva de los servicios y precios respectivos se producir\u00E1 con la emisi\u00F3n de pasajes y/u \u00F3rdenes de servicios y la facturaci\u00F3n correspondiente.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](59, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](60, "3) Las operaciones a cr\u00E9dito deber\u00E1n satisfacer los requisitos propios fijados para las mismas. En su defecto el interesado deber\u00E1 cumplimentar el pago de los saldos en los plazos y condiciones establecidos en la contrataci\u00F3n.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](61, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](62, "b. LOS PRECIOS INCLUYEN: alojamiento en los hoteles mencionados en los itinerarios u otros de igual o mayor categor\u00EDa, ocupando habitaciones simples, dobles, triples, etc. Seg\u00FAn tarifa elegida, con ba\u00F1o privado e impuestos. R\u00E9gimen de comidas seg\u00FAn se indique en cada oportunidad. Visitas y excursiones que se mencionen. Traslados hasta y desde aeropuertos, terminales y hoteles, cuando se indique. La cantidad prevista de d\u00EDas de alojamiento teniendo en cuenta que el d\u00EDa de alojamiento hotelero se computa desde las quince horas y finaliza a las doce horas del d\u00EDa siguiente, independientemente de la hora de llegada y de salida y de la utilizaci\u00F3n completa o fraccionada del mismo. La duraci\u00F3n del tour ser\u00E1 indicada en cada caso tomando como primer d\u00EDa, el de salida y como \u00FAltimo incluido el d\u00EDa de salida del destino, independientemente del horario de salida o de llegada en el primer d\u00EDa o en el \u00FAltimo.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](63, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](64, "c. SERVICIOS O RUBROS NO INCLUIDOS: 1) Extras, bebidas, lavado de ropa, propinas, tasas de embarque, tasas sobre servicios, IVA y otros impuestos actuales y/o futuros, ni ning\u00FAn servicio que no se encuentre expresamente indicado en la orden de servicio emitida por el agente de viajes. 2) Estadas, comidas y/o gastos adicionales o perjuicios producidos por cancelaciones, demoras en las salidas o llegadas de los medios de transporte, o por razones imprevistas ajenas a la empresa. 3) Alimentaci\u00F3n en ruta, excepto aquellas que estuviesen expresamente incluidas en los programas. 4) Los gastos e intereses en las operaciones a cr\u00E9dito.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](65, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](66, "d. LIMITACIONES AL DERECHO DE PERMANENCIA: La empresa se reserva el derecho de hacer que abandone el tour en cualquier punto del mismo todo pasajero cuya conducta, modo de obrar, estado de salud u otras razones graves a juicio de la empresa provoque peligro o cause molestias a los restantes viajeros o pueda malograr el \u00E9xito de la excursi\u00F3n o el normal desarrollo de la misma.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](67, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](68, "e. DOCUMENTACION: Para los viajes al exterior es necesario atender la legislaci\u00F3n vigente en cada caso. Es responsabilidad inexcusable de la agencia informar fehacientemente y con anticipaci\u00F3n suficiente sobre los requisitos que exigen las autoridades migratorias, aduaneras y sanitarias de los destinos que incluye el tour, siendo responsabilidad exclusiva del pasajero contar con la documentaci\u00F3n personal que exijan las autoridades mencionadas anteriormente.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](69, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](70, "f. CANCELACIONES: 1) En caso de desistimiento de operaciones a cr\u00E9dito no tendr\u00E1n reembolso los importes abonados en concepto de informe, gastos administrativos, sellados e intereses. 2) Cuando se trate de desistimiento que afecte a servicios contratados en firme por la agencia, el reembolso de los mismos estar\u00E1 sujeto a las condiciones contractuales bajo las cuales presten sus servicios las empresas respectivas. En todos los casos de reintegros, la agencia podr\u00E1 retener el precio de los gastos incurridos m\u00E1s la comisi\u00F3n del diez por ciento de los servicios contratados con terceros.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](71, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](72, "g. TRANSPORTE NO REGULAR O CHARTER: rige lo estipulado en el punto anterior. Sin perjuicio de ello, en estos casos s\u00F3lo se reintegrar\u00E1 la proporci\u00F3n del precio correspondiente a los servicios terrestres (hoteler\u00EDa, pensi\u00F3n, excursiones) que determine el organizador seg\u00FAn la modalidad con que operen los prestadores de los servicios. Para que \u00E9sta cl\u00E1usula sea v\u00E1lida deber\u00E1 determinarse en el primer documento entregado al pasajero la calidad del transporte.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](73, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](74, "h. CESION Y TRANSFERENCIA: el derecho que confiere al cliente el contrato de servicios tur\u00EDsticos, podr\u00E1 ser cedido o transferido a otras personas hasta 30 d\u00EDas antes de la fecha de salida, siempre que no se opongan a ello las prescripciones del transportista, del hotelero o prestador de los servicios. En los supuestos que los pasajeros sean de distintas edades (mayores-menores), se ajustar\u00E1 el precio seg\u00FAn tarifarios. En todos los casos de cesi\u00F3n o transferencia, la empresa podr\u00E1 percibir el sobreprecio del 10% del monto convenido.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](75, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](76, "i. RESPONSABILIDAD: 1) La empresa declara expresamente que act\u00FAa en el car\u00E1cter de intermediaria en la reserva o contrataci\u00F3n de los distintos servicios vinculados e incluidos en el respectivo tour o reservaci\u00F3n de servicios: hoteles, restaurantes, medios de transportes u otros prestadores. No obstante ello las responsabilidades de la empresa, sea que intervenga como organizadora o intermediaria de viaje ser\u00E1 determinada conforme las disposiciones contenidas en la Convenci\u00F3n Internacional Relativa al Contrato de Viaje aprobada por la Ley N\u00B0 19.918. 2) La empresa no se responsabiliza por los hechos que se produzcan por caso fortuito o fuerza mayor, fen\u00F3menos clim\u00E1ticos o hechos de la naturaleza que acontezcan antes o durante el desarrollo del tour que impidan, demoren o de cualquier modo obstaculicen la ejecuci\u00F3n total o parcial de las prestaciones comprometidas por la empresa, de conformidad con lo dispuesto por el C\u00F3digo Civil.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](77, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](78, "j. ALTERACIONES O MODIFICACIONES: 1) La empresa se reserva el derecho, por razones t\u00E9cnicas u operativas, de alterar total o parcialmente el ordenamiento diario y/o de servicios que componen el tour, antes o durante la ejecuci\u00F3n del mismo. 2) Salvo condici\u00F3n expresa en contrario, los hoteles estipulados podr\u00E1n ser cambiados por otro de igual o mayor categor\u00EDa dentro del mismo n\u00FAcleo urbano sin cargo alguno para el pasajero. Respecto de estas variaciones el pasajero no tendr\u00E1 derecho a indemnizaci\u00F3n alguna. 3) La empresa podr\u00E1 anular cualquier tour cuando se configure alguna de las circunstancias previstas en el art.24 del Decreto N\u00B0 2182/72. 4) Una vez comenzado el viaje, la suspensi\u00F3n, modificaci\u00F3n o interrupci\u00F3n de los servicios por parte del pasajero por razones personales de cualquier \u00EDndole, no dar\u00E1 lugar a reclamo alguno, reembolso o devoluci\u00F3n alguna.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](79, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](80, "k. CLAUSULA DE ARBITRAJE: Toda cuesti\u00F3n que surja con motivo de la celebraci\u00F3n, cumplimiento, incumplimiento, pr\u00F3rroga o rescisi\u00F3n del presente contrato, podr\u00E1 ser sometida por las partes a la resoluci\u00F3n del Tribunal Arbitral de la Asociaci\u00F3n Argentina de Agencias de Viajes y Turismo y/o de los Tribunales Arbitrales que funcionen en sus Regionales. En caso de sometimiento de dicha jurisdicci\u00F3n, los contratantes se sujetan y dan por aceptadas todas las condiciones establecidas por la Reglamentaci\u00F3n del Tribunal Arbitral.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](81, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](82, "l. NORMAS DE APLICACI\u00D3N: El presente contrato y en su caso la prestaci\u00F3n de los servicios, se regir\u00E1 exclusivamente por estas condiciones generales, por la Ley N\u00B0 18.829 y su reglamentaci\u00F3n y por la Convenci\u00F3n de Bruselas aprobada por la Ley 19.918. Las presentes condiciones generales junto con la restante documentaci\u00F3n que se entregue a los pasajeros conformar\u00E1n el Contrato de Viaje que establece la citada Convenci\u00F3n.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](83, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](84, "b");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](85, "Firmado Ing. HERNAN LOMBARDI. Secretario de Turismo. Presidencia de la Naci\u00F3n.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](86, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](87, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](88, "\n\u00A0");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](89, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } }, styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJ0ZXJtaW5vcy5jb21wb25lbnQuY3NzIn0= */"] });
 
 
 /***/ }),

@@ -1,17 +1,19 @@
+import { Usuario } from './../models/usuario.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Post } from './Post'
+import { LoginPanelComponent } from '../componentes/loginpanel/loginpanel.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuariosService {
+  formData : Usuario ;
+  readonly rootURL = 'https://localhost:44330/';
+  constructor(private http: HttpClient){
 
-  constructor(private http:HttpClient){
-    console.log('service is running!!');
   }
+postUsuario(formData : Usuario){
+  return this.http.post(this.rootURL+'api/usuarios',formData);
 
-  getdata(){
-    return this.http.get<Post[]>('https://localhost:44330/api/usuarios')
-  }
 }
+  }

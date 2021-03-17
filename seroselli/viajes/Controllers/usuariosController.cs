@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-
+using viajes.Models;
 
 namespace viajes.Controllers
 {
@@ -16,19 +16,19 @@ namespace viajes.Controllers
             return Ok("exito");
         }
     [HttpPost]
-     public IHttpActionResult Add()
+     public IHttpActionResult Add(usuarios Form)
         {
             using (Models.userEntities db = new Models.userEntities())
             {
-            var oUsuario = new Models.usuarios();
-            oUsuario.nombre = "pepde";
-            oUsuario.apellido = "argsento";
-            oUsuario.email = "argendti@gmail.com";
-            oUsuario.epassword = "1234657a8";
+            var oUsuario = new usuarios();
+            oUsuario.nombre = Form.nombre;
+            oUsuario.apellido = Form.apellido;
+            oUsuario.email = Form.email;
+            oUsuario.epassword = Form.epassword;
             db.usuarios.Add(oUsuario);
             db.SaveChanges();
 
-            return Ok("bien");
+            return Ok("Registrado");
             }
             
         }

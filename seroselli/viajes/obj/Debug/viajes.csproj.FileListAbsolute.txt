@@ -180,3 +180,6 @@ D:\.git-repository\proyecto-g1d-proyecto-g1d\seroselli\viajes\bin\EntityFramewor
 D:\.git-repository\proyecto-g1d-proyecto-g1d\seroselli\viajes\bin\System.Net.Http.Formatting.xml
 D:\.git-repository\proyecto-g1d-proyecto-g1d\seroselli\viajes\bin\System.Web.Http.xml
 D:\.git-repository\proyecto-g1d-proyecto-g1d\seroselli\viajes\bin\System.Web.Http.WebHost.xml
+D:\.git-repository\proyecto-g1d-proyecto-g1d\seroselli\viajes\bin\System.Web.Cors.dll
+D:\.git-repository\proyecto-g1d-proyecto-g1d\seroselli\viajes\bin\System.Web.Http.Cors.dll
+D:\.git-repository\proyecto-g1d-proyecto-g1d\seroselli\viajes\bin\System.Web.Http.Cors.xml

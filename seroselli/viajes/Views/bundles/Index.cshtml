@@ -3,7 +3,7 @@
     Layout = null;
 }
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <title>Index</title>
@@ -12,7 +12,8 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    @Styles.Render("~/Content/Styles")
+
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <app-root></app-root>
@@ -22,11 +23,14 @@
             $("#ibotonAcceder").click(function () {
                 $("app-login-panel").fadeToggle("fast");
             });
+
+
         });
     </script>
-
-    @Scripts.Render("~/Bundles")
-
+    <script src="runtime.js" defer></script>
+    <script src="polyfills.js" defer></script>
+    <script src="vendor.js" defer></script>
+    <script src="main.js" defer></script>
 </body>
 
 </html>

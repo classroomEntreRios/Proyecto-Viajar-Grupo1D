@@ -2,6 +2,10 @@ app-login-panel {
     display:none;
 }
 
-div.div1{
-    display: none;
+
+
+div.pagina{
+    width: 100%;
+    height: auto;
+    margin-bottom: 0px;
 }

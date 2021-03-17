@@ -9,10 +9,5 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   
-  constructor(private usuario : UsuariosService){
-    this.usuario.getdata().subscribe(Usuario =>{
-      console.log(Usuario);
-    })
-  }
 
 }
