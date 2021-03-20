@@ -13,6 +13,9 @@ import { UsuariosService } from './services/usuarios.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './paginas/register/register.component';
+import { SidenavComponent } from './componentes/sidenav/sidenav.component';
+import { DashboardComponent } from './componentes/dashboard/dashboard.component';
+
 
 
 
@@ -22,7 +25,9 @@ import { RegisterComponent } from './paginas/register/register.component';
     NavbarComponent,
     FooterComponent,
     LoginPanelComponent,
-    RegisterComponent
+    RegisterComponent,
+    SidenavComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
