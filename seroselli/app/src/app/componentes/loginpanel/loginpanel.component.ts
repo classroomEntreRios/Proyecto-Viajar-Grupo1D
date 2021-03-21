@@ -28,7 +28,6 @@ export class LoginPanelComponent implements OnInit {
       epassword : ''
     }
 
-
   }
   onSubmit(form:NgForm){
     this.insertRecord(form);
