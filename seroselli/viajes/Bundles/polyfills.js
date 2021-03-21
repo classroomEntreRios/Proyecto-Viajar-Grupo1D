@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\.git-repository\proyecto-g1d-proyecto-g1d\seroselli\app\src\polyfills.ts */"hN/g");
+module.exports = __webpack_require__(/*! D:\.git-repository\Proyecto-Viajar-Grupo1D\seroselli\app\src\polyfills.ts */"hN/g");
 
 
 /***/ }),

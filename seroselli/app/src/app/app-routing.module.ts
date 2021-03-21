@@ -5,12 +5,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './paginas/register/register.component';
 import { DashboardComponent } from './componentes/dashboard/dashboard.component';
 
+
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'dash', component: DashboardComponent},
   {path: 'registrarse', component: RegisterComponent},
   {path: 'terminos', component: TerminosComponent},
   {path:'**', pathMatch:'full', redirectTo: 'home'}
+  
 
 ];
 

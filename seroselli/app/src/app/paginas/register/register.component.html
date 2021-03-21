@@ -1,6 +1,6 @@
-      <div class="card card-body" style="background-color: rgb(171, 218, 213); z-index: 1;">
-          <h5>Registrarse</h5><br><hr>
-          <div class="container pb-auto" style="padding-left: 30%;padding-right: 30%; padding-bottom: 10%;">
+      <div class="container-fluid" style="background-color: rgb(171, 218, 213); z-index: 0;">
+          <h5 style="align-items: center;">Registrarse</h5><br><hr>
+          <div class="container pb-3">
             <form class="form-group" #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
                 <label class="form-label">Nombre</label>
                 <input name="nombre" #nombre="ngModel" [(ngModel)]="service.formData.nombre" class="form-control" placeholder="Juan">
@@ -28,11 +28,6 @@
                 </div>
             </form>        
       </div>
-
-      {{service.formData.nombre}}
-      {{service.formData.apellido}}
-      {{service.formData.uemail}}
-      {{service.formData.epassword}}
 
     </div>
 

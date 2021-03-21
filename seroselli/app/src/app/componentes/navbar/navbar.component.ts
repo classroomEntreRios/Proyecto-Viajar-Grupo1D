@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { stringify } from '@angular/compiler/src/util';
+import { Component, OnInit, SystemJsNgModuleLoaderConfig } from '@angular/core';
+import {LoginPanelComponent} from '../loginpanel/loginpanel.component'
 
 @Component({
   selector: 'app-navbar',
@@ -6,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+
 
   constructor() { }
 

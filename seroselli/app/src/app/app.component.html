@@ -1,13 +1,16 @@
+
 <app-navbar style="z-index: 2;top: 0px;"></app-navbar>
 
 <app-login-panel style="z-index: 2!important;"></app-login-panel>
-<app-dashboard style="z-index: 2!important;"></app-dashboard>
-<div  style="z-index: 0;max-height: 800px;">
-  <app-sidenav></app-sidenav>
+
+
+<div style="z-index: 0;">
+  <app-dashboard style="z-index: 2!important;"></app-dashboard>
   <router-outlet></router-outlet>
+  <app-footer></app-footer>
 </div>
 
-<app-footer></app-footer>
+
 
 
 

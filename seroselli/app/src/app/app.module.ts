@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from "./componentes/navbar/navbar.component";
 import { LoginPanelComponent } from './componentes/loginpanel/loginpanel.component';
 import { FooterComponent } from './componentes/footer/footer.component';
-import { PaginasModule } from './paginas/paginas.module';
 
 import { UsuariosService } from './services/usuarios.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -15,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './paginas/register/register.component';
 import { SidenavComponent } from './componentes/sidenav/sidenav.component';
 import { DashboardComponent } from './componentes/dashboard/dashboard.component';
+
 
 
 
@@ -32,7 +32,6 @@ import { DashboardComponent } from './componentes/dashboard/dashboard.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PaginasModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule
