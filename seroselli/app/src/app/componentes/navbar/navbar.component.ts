@@ -9,10 +9,11 @@ import {LoginPanelComponent} from '../loginpanel/loginpanel.component'
 })
 export class NavbarComponent implements OnInit {
 
-
+  nombreUsuario : string = "Iniciar Sesión";
   constructor() { }
 
   ngOnInit(): void {
   }
+
 
 }

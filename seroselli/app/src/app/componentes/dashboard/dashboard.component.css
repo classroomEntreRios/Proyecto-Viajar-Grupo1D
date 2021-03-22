@@ -8,6 +8,7 @@
   overflow-y: auto;
   background: #feffff;
   color: rgb(0, 0, 0);
+  z-index: 2;
 }
 
 .content-container {

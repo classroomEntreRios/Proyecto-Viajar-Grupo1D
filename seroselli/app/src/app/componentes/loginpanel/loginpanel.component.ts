@@ -1,3 +1,5 @@
+import { Usuario } from './../../models/usuario.model';
+import { NavbarComponent } from './../navbar/navbar.component';
 import { UsuariosService } from './../../services/usuarios.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, NgForm } from '@angular/forms';
@@ -37,7 +39,13 @@ export class LoginPanelComponent implements OnInit {
       this.resetForm(form);
     });
   }
+  logged : string = "oculto";
 
+  public  logeo(){
+if(this.logged=="oculto"){
+  this.logged="visible";
+}
+  }
 
 
 }
