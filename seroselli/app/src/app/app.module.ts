@@ -14,6 +14,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './paginas/register/register.component';
 import { SidenavComponent } from './componentes/sidenav/sidenav.component';
 import { DashboardComponent } from './componentes/dashboard/dashboard.component';
+import { ChatComponent } from './componentes/chat/chat.component';
+import { ForoComponent } from './paginas/foro/foro.component';
 
 
 
@@ -27,7 +29,9 @@ import { DashboardComponent } from './componentes/dashboard/dashboard.component'
     LoginPanelComponent,
     RegisterComponent,
     SidenavComponent,
-    DashboardComponent
+    DashboardComponent,
+    ChatComponent,
+    ForoComponent
   ],
   imports: [
     BrowserModule,
