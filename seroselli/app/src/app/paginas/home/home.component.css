@@ -26,3 +26,21 @@
     background-repeat: no-repeat;
     background-size: cover;
   }
+
+  .imagen {
+    width: 1000px;
+    height: 800px;
+    overflow: hidden;
+    margin: 10px;
+    position: relative;
+}
+.imagen > .crop {
+    position:absolute;
+    left: -100%;
+    right: -100%;
+    top: -100%;
+    bottom: -100%;
+    margin: auto;
+    min-height: 100%;
+    min-width: 100%;
+}
