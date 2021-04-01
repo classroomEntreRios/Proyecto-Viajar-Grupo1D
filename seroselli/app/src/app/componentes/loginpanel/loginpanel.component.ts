@@ -1,10 +1,8 @@
-import { Usuario } from './../../models/usuario.model';
-import { NavbarComponent } from './../navbar/navbar.component';
+import { Usuario, LogUsuario, Logueado } from './../../models/usuario.model';
 import { UsuariosService } from './../../services/usuarios.service';
-import { Component, OnInit } from '@angular/core';
-import { FormControl, NgForm } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
+import { Component, OnInit, Output , EventEmitter } from '@angular/core';
+import { FormControl, NgForm, NgModel } from '@angular/forms';
+import {Router} from '@angular/router';
  
 @Component({
   selector: 'app-login-panel',
@@ -13,39 +11,48 @@ import { NgModule } from '@angular/core';
 })
 export class LoginPanelComponent implements OnInit {
 
-  constructor(public service :  UsuariosService) { }
+  notificacion : string = "oculto";
+  mensaje : string;
+  logeado : any = {display: "none"};
+
+  @Output() eventoUsuario = new EventEmitter<Logueado>();
+
+  constructor(public usuario :  UsuariosService) { }
 
   ngOnInit(): void {
-    this.resetForm();
-  }
-  resetForm(form?:NgForm) {
-    if(form!=null){
-      form.resetForm();
-    }
+      }
+  resetForm(form : NgForm) {
+    if(form.value != null){
+    this.usuario.formLog ={
+        uemail : '',
+        epassword : ''
+      }
 
-    this.service.formData ={
-      nombre :  '',
-      apellido : '',
-      uemail : '',
-      epassword : ''
     }
 
   }
-  onSubmit(form:NgForm){
+  onSubmit(form : NgForm){
     this.insertRecord(form);
-  }
-  insertRecord(form:NgForm){
-    this.service.postUsuario(form.value).subscribe( res => {
-      this.resetForm(form);
-    });
-  }
-  logged : string = "oculto";
+      }
+  
+  insertRecord(form : NgForm){
+   this.usuario.postUsuarioLog(form.value).subscribe( res => {
+     if(res == 0){
+      this.mensaje="Email no registrado";
+       this.notificacion="alert-danger visible"
+     }
+     if(res == 1){
+      this.mensaje="Contraseña incorrecta";
+      this.notificacion="alert-danger visible"
+    }
+    if(res == 2){
+      this.mensaje="Logeado correctamente";
+      this.notificacion="alert-success visible"
+    }
 
-  public  logeo(){
-if(this.logged=="oculto"){
-  this.logged="visible";
+    this.usuario.getUsuarioLog().subscribe(data => this.eventoUsuario.emit(data));
+        
+  })
+
 }
-  }
-
-
 }

@@ -13,7 +13,7 @@ namespace viajes
             config.MapHttpAttributeRoutes();
 
             //enable cors
-            config.EnableCors(new EnableCorsAttribute("http//localhost:4200", headers: "*", methods: "*"));
+            config.EnableCors(new EnableCorsAttribute("http://localhost:4200", headers: "*", methods: "*"));
 
                 config.Routes.MapHttpRoute(
                 name: "DefaultApi",

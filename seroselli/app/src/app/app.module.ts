@@ -19,8 +19,6 @@ import { ForoComponent } from './paginas/foro/foro.component';
 
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent,

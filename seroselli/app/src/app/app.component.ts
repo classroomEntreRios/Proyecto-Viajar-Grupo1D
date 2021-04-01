@@ -1,3 +1,4 @@
+import { Logueado } from './models/usuario.model';
 import { HomeComponent } from './paginas/home/home.component';
 import { TerminosComponent } from './paginas/terminos/terminos.component';
 import { RegisterComponent } from './paginas/register/register.component';
@@ -11,7 +12,12 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
+ 
+  public usuario : Logueado;
+
+  refreshUsuario(newUsuario: Logueado) {
+    this.usuario = newUsuario;
+  }
 
 }
 

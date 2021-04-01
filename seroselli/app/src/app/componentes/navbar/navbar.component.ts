@@ -1,6 +1,6 @@
-import { stringify } from '@angular/compiler/src/util';
-import { Component, OnInit, SystemJsNgModuleLoaderConfig } from '@angular/core';
-import {LoginPanelComponent} from '../loginpanel/loginpanel.component'
+import { Logueado } from './../../models/usuario.model';
+import { UsuariosService } from './../../services/usuarios.service';
+import { Component, OnInit, Input} from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -8,12 +8,15 @@ import {LoginPanelComponent} from '../loginpanel/loginpanel.component'
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
-  nombreUsuario : string = "Iniciar Sesión";
-  constructor() { }
-
+  
+  @Input() usuarioNavbar : Logueado;
+     constructor(public usuarioServ :  UsuariosService) {}
+  
   ngOnInit(): void {
-  }
+    
+    this.usuarioServ.getUsuarioLog().subscribe(data => this.usuarioNavbar = data);
 
-
+  } 
 }
+
+

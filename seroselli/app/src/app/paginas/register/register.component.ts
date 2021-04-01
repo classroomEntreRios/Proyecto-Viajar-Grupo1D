@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Usuario } from './../../models/usuario.model';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { UsuariosService } from './../../services/usuarios.service';
-import { FormControl, NgForm } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
+import { FormControl, NgForm, FormsModule} from '@angular/forms';
 import { NgModule } from '@angular/core';
+import { from, observable } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -10,38 +12,39 @@ import { NgModule } from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  
-    pass: string = "password";
-    constructor(public service :  UsuariosService) { }
-  
+
+  constructor( public usuarioService : UsuariosService) { }
+
     ngOnInit(): void {
       this.resetForm();
-      
     }
+
     resetForm(form?:NgForm) {
-      if(form!=null){
+      if(form!=null)
         form.resetForm();
-      }
+      
   
-      this.service.formData ={
+      this.usuarioService.formData ={
         nombre :  '',
         apellido : '',
         uemail : '',
         epassword : ''
       }
-  
-  
+    
     }
+
     onSubmit(form:NgForm){
       this.insertRecord(form);
     }
-    insertRecord(form:NgForm){
-      this.service.postUsuario(form.value).subscribe( res => {
+
+    insertRecord(form : NgForm){
+      this.usuarioService.postUsuario(form.value).subscribe( res => {
         this.resetForm(form);
       });
     }
     
-  
+
+    pass: string = "password";
     verPass(){
       if(this.pass == "password")
       this.pass = "text";
@@ -52,10 +55,6 @@ export class RegisterComponent implements OnInit {
     this.pass = "password";
     }
 
-    
-
-
-
-
+  
   }
   

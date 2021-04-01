@@ -1,20 +1,21 @@
       <div class="container-fluid" style="background-color: rgb(171, 218, 213); z-index: 0;">
-          <h5 style="align-items: center;">Registrarse</h5><br><hr>
+          <h5 >Registrarse</h5>
+          <br><hr>
           <div class="container pb-3">
             <form class="form-group" #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
                 <label class="form-label">Nombre</label>
-                <input name="nombre" #nombre="ngModel" [(ngModel)]="service.formData.nombre" class="form-control" placeholder="Juan">
+                <input name="nombre" #nombre="ngModel" [(ngModel)]="this.usuarioService.formData.nombre" class="form-control" placeholder="Juan">
                 <br>
                 <label class="form-label">Apellido</label>
-                <input name="apellido" #apellido="ngModel" [(ngModel)]="service.formData.apellido" class="form-control" placeholder="Perez">  
+                <input name="apellido" #apellido="ngModel" [(ngModel)]="this.usuarioService.formData.apellido" class="form-control" placeholder="Perez">  
                 <br>
                 <label class="form-label">Correo Electrónico</label>
-                <input type="email" name="uemail" #uemail="ngModel" [(ngModel)]="service.formData.uemail" class="form-control"  placeholder="juanperez@correo.com">
+                <input type="email" name="uemail" #uemail="ngModel" [(ngModel)]="this.usuarioService.formData.uemail" class="form-control"  placeholder="juanperez@correo.com">
                 <br>
                 <label class="form-label">Contraseña</label>
                 <div class="input-group mb-3">
-                    <input type="{{pass}}" name="password" #epassword="ngModel" [(ngModel)]="service.formData.epassword" class="form-control" placeholder="********">
-                    <button class="verPass" type="button" (click)="verPass()"></button>
+                    <input type="{{pass}}" name="password" #epassword="ngModel" [(ngModel)]="this.usuarioService.formData.epassword" class="form-control" placeholder="********">
+                    <button class="verPass" type="button" (click)="verPass()"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15 12c0 1.657-1.343 3-3 3s-3-1.343-3-3c0-.199.02-.393.057-.581 1.474.541 2.927-.882 2.405-2.371.174-.03.354-.048.538-.048 1.657 0 3 1.344 3 3zm-2.985-7c-7.569 0-12.015 6.551-12.015 6.551s4.835 7.449 12.015 7.449c7.733 0 11.985-7.449 11.985-7.449s-4.291-6.551-11.985-6.551zm-.015 12c-2.761 0-5-2.238-5-5 0-2.761 2.239-5 5-5 2.762 0 5 2.239 5 5 0 2.762-2.238 5-5 5z"/></svg></button>
                   </div>
                   <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
