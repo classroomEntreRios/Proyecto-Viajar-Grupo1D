@@ -8,6 +8,7 @@ export class LogUsuario{
     uemail: string;
     epassword : string;
 }
+
 export class Logueado{
     nombre : string;
     imaPerfil: string;

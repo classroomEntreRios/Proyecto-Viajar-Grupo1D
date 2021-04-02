@@ -8,7 +8,14 @@
     <Property Name="nombre" Type="nchar" MaxLength="50" Nullable="false" />
     <Property Name="apellido" Type="nchar" MaxLength="50" Nullable="false" />
     <Property Name="epassword" Type="nchar" MaxLength="12" Nullable="false" />
+    <Property Name="token" Type="nchar" MaxLength="10" />
     <Property Name="fechaAlta" Type="smalldatetime" />
+    <Property Name="fechaBaja" Type="smalldatetime" />
+    <Property Name="tipoUsuario" Type="int" Nullable="false" />
+    <Property Name="emailVerificado" Type="bit" />
+    <Property Name="imaPerfil" Type="nvarchar(max)" />
+    <Property Name="ultimaConexion" Type="datetime" />
+    <Property Name="descripcion" Type="text" />
   </EntityType>
   <EntityContainer Name="userModelStoreContainer">
     <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />

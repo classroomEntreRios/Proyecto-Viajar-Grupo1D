@@ -13,7 +13,14 @@
           <Property Name="nombre" Type="nchar" MaxLength="50" Nullable="false" />
           <Property Name="apellido" Type="nchar" MaxLength="50" Nullable="false" />
           <Property Name="epassword" Type="nchar" MaxLength="12" Nullable="false" />
+          <Property Name="token" Type="nchar" MaxLength="10" />
           <Property Name="fechaAlta" Type="smalldatetime" />
+          <Property Name="fechaBaja" Type="smalldatetime" />
+          <Property Name="tipoUsuario" Type="int" Nullable="false" />
+          <Property Name="emailVerificado" Type="bit" />
+          <Property Name="imaPerfil" Type="nvarchar(max)" />
+          <Property Name="ultimaConexion" Type="datetime" />
+          <Property Name="descripcion" Type="text" />
         </EntityType>
         <EntityContainer Name="userModelStoreContainer">
           <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
@@ -31,7 +38,14 @@
           <Property Name="nombre" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="apellido" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="epassword" Type="String" MaxLength="12" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="token" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="fechaAlta" Type="DateTime" Precision="0" />
+          <Property Name="fechaBaja" Type="DateTime" Precision="0" />
+          <Property Name="tipoUsuario" Type="Int32" Nullable="false" />
+          <Property Name="emailVerificado" Type="Boolean" />
+          <Property Name="imaPerfil" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ultimaConexion" Type="DateTime" Precision="3" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="userEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="usuarios" EntityType="Self.usuarios" />
@@ -49,7 +63,14 @@
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="apellido" ColumnName="apellido" />
                 <ScalarProperty Name="epassword" ColumnName="epassword" />
+                <ScalarProperty Name="token" ColumnName="token" />
                 <ScalarProperty Name="fechaAlta" ColumnName="fechaAlta" />
+                <ScalarProperty Name="fechaBaja" ColumnName="fechaBaja" />
+                <ScalarProperty Name="tipoUsuario" ColumnName="tipoUsuario" />
+                <ScalarProperty Name="emailVerificado" ColumnName="emailVerificado" />
+                <ScalarProperty Name="imaPerfil" ColumnName="imaPerfil" />
+                <ScalarProperty Name="ultimaConexion" ColumnName="ultimaConexion" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

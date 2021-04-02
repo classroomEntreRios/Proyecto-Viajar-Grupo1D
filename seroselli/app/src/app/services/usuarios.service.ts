@@ -19,11 +19,14 @@ export class UsuariosService {
   constructor(private http: HttpClient){
 
   }
+
+
+
 postUsuario(formData : Usuario){
   return this.http.post(this.rootURL+'api/usuarios/Registrar',this.formData);
 
 }
-
+  //'https://localhost:44330/api/usuarios/Logon/form = 
 postUsuarioLog(form : LogUsuario):Observable<any>{
   return this.http.post(this.rootURL+this.ApiLogin,form);
 

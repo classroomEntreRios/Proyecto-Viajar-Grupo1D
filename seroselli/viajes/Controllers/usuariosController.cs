@@ -25,18 +25,17 @@ namespace viajes.Controllers
 
         [HttpPost]
         public int Logon(formLog formData)
-        {
+        { 
             int emailErr = 0;
             int passErr = 1;
             int passOk = 2;
             usuarios oUsuario = db.usuarios.Where(a => a.email == formData.uemail).FirstOrDefault();
-            if(oUsuario != null)
+            if (oUsuario != null)
             {
                 if (oUsuario.email == formData.uemail)
                 {
-                    if(oUsuario.epassword == formData.epassword)
+                    if (oUsuario.epassword == formData.epassword)
                     {
-                        this.logueado.nombre = oUsuario.nombre + ", " + oUsuario.apellido;
                         return passOk;
                     }
                     else

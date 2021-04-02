@@ -8,7 +8,14 @@
     <Property Name="nombre" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="apellido" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="epassword" Type="String" MaxLength="12" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="token" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
     <Property Name="fechaAlta" Type="DateTime" Precision="0" />
+    <Property Name="fechaBaja" Type="DateTime" Precision="0" />
+    <Property Name="tipoUsuario" Type="Int32" Nullable="false" />
+    <Property Name="emailVerificado" Type="Boolean" />
+    <Property Name="imaPerfil" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ultimaConexion" Type="DateTime" Precision="3" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityContainer Name="userEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="usuarios" EntityType="Self.usuarios" />

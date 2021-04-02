@@ -9,7 +9,7 @@ import { DashboardComponent } from './componentes/dashboard/dashboard.component'
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'dash', component: DashboardComponent},
-  {path: 'registrarse', component: RegisterComponent},
+  {path: 'registro', component: RegisterComponent},
   {path: 'terminos', component: TerminosComponent},
   {path:'**', pathMatch:'full', redirectTo: 'home'}
   

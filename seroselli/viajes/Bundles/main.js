@@ -413,6 +413,7 @@ class UsuariosService {
     postUsuario(formData) {
         return this.http.post(this.rootURL + 'api/usuarios/Registrar', this.formData);
     }
+    //'https://localhost:44330/api/usuarios/Logon/form = 
     postUsuarioLog(form) {
         return this.http.post(this.rootURL + this.ApiLogin, form);
     }
@@ -612,7 +613,7 @@ class LoginPanelComponent {
     }
 }
 LoginPanelComponent.ɵfac = function LoginPanelComponent_Factory(t) { return new (t || LoginPanelComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_usuarios_service__WEBPACK_IMPORTED_MODULE_1__["UsuariosService"])); };
-LoginPanelComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: LoginPanelComponent, selectors: [["app-login-panel"]], outputs: { eventoUsuario: "eventoUsuario" }, decls: 38, vars: 4, consts: [["ngstyle", "logeado", "id", "loginPanel", 1, "login-panel", "oculto"], [1, "oscurecer-fondo"], [1, "panel"], ["novalidate", "", 3, "ngSubmit"], ["form", "ngForm"], [1, "form-group"], ["type", "email", "name", "uemail", "ngModel", "", "placeholder", " correo@correo.com", "required", "", 1, "form-control", 3, "ngModel"], ["uemail", "ngModel"], ["type", "password", "name", "epassword", "ngModel", "", "placeholder", "*********", "required", "", 1, "form-control", 3, "ngModel"], ["epassword", "ngModel"], ["type", "submit", "id", "botonAcceder", 1, "btn", "btn-primary", 2, "width", "100%"], ["href", "/registrarse", 1, "btn", "btn-outline-light"], ["role", "alert"], ["id", "perfilOptions", 1, "perfilOptions", "oculto"], ["href", "#", 1, "item"]], template: function LoginPanelComponent_Template(rf, ctx) { if (rf & 1) {
+LoginPanelComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: LoginPanelComponent, selectors: [["app-login-panel"]], outputs: { eventoUsuario: "eventoUsuario" }, decls: 38, vars: 4, consts: [["ngstyle", "logeado", "id", "loginPanel", 1, "login-panel", "oculto"], [1, "oscurecer-fondo"], [1, "panel"], ["novalidate", "", 3, "ngSubmit"], ["form", "ngForm"], [1, "form-group"], ["type", "email", "name", "uemail", "ngModel", "", "placeholder", " correo@correo.com", "required", "", 1, "form-control", 3, "ngModel"], ["uemail", "ngModel"], ["type", "password", "name", "epassword", "ngModel", "", "placeholder", "*********", "required", "", 1, "form-control", 3, "ngModel"], ["epassword", "ngModel"], ["type", "submit", "id", "botonAcceder", 1, "btn", "btn-primary", 2, "width", "100%"], ["href", "/registro", 1, "btn", "btn-outline-light"], ["role", "alert"], ["id", "perfilOptions", 1, "perfilOptions", "oculto"], ["href", "#", 1, "item"]], template: function LoginPanelComponent_Template(rf, ctx) { if (rf & 1) {
         const _r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 1);
@@ -914,7 +915,7 @@ __webpack_require__.r(__webpack_exports__);
 const routes = [
     { path: 'home', component: _paginas_home_home_component__WEBPACK_IMPORTED_MODULE_1__["HomeComponent"] },
     { path: 'dash', component: _componentes_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_4__["DashboardComponent"] },
-    { path: 'registrarse', component: _paginas_register_register_component__WEBPACK_IMPORTED_MODULE_3__["RegisterComponent"] },
+    { path: 'registro', component: _paginas_register_register_component__WEBPACK_IMPORTED_MODULE_3__["RegisterComponent"] },
     { path: 'terminos', component: _paginas_terminos_terminos_component__WEBPACK_IMPORTED_MODULE_0__["TerminosComponent"] },
     { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];

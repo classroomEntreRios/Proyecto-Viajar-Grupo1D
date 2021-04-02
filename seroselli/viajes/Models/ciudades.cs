@@ -12,19 +12,14 @@ namespace viajes.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class usuarios
+    public partial class ciudades
     {
-        public string email { get; set; }
+        public string id { get; set; }
         public string nombre { get; set; }
-        public string apellido { get; set; }
-        public string epassword { get; set; }
-        public string token { get; set; }
-        public Nullable<System.DateTime> fechaAlta { get; set; }
-        public Nullable<System.DateTime> fechaBaja { get; set; }
-        public int tipoUsuario { get; set; }
-        public Nullable<bool> emailVerificado { get; set; }
-        public string imaPerfil { get; set; }
-        public Nullable<System.DateTime> ultimaConexion { get; set; }
+        public string cantHab { get; set; }
+        public string imaCiudad { get; set; }
+        public Nullable<System.DateTime> ultimaMod { get; set; }
         public string descripcion { get; set; }
+        public Nullable<int> cp { get; set; }
     }
 }

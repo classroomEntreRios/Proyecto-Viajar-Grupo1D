@@ -10,6 +10,8 @@ import { Component, OnInit, Input} from '@angular/core';
 export class NavbarComponent implements OnInit {
   
   @Input() usuarioNavbar : Logueado;
+
+
      constructor(public usuarioServ :  UsuariosService) {}
   
   ngOnInit(): void {
