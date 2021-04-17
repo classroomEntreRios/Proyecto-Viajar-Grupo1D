@@ -16,6 +16,8 @@ import { SidenavComponent } from './componentes/sidenav/sidenav.component';
 import { DashboardComponent } from './componentes/dashboard/dashboard.component';
 import { ChatComponent } from './componentes/chat/chat.component';
 import { ForoComponent } from './paginas/foro/foro.component';
+import { ClimaComponent } from './componentes/clima/clima.component';
+import { ClimaService } from './services/clima.service';
 
 
 
@@ -29,7 +31,8 @@ import { ForoComponent } from './paginas/foro/foro.component';
     SidenavComponent,
     DashboardComponent,
     ChatComponent,
-    ForoComponent
+    ForoComponent,
+    ClimaComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,7 @@ import { ForoComponent } from './paginas/foro/foro.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [UsuariosService],
+  providers: [UsuariosService, ClimaService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
