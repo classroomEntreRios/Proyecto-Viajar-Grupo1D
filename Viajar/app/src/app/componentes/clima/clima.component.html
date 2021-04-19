@@ -1,0 +1,46 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2"> 
+            <div class="card ">
+                <div class="card-body">
+                <h4 class="card-title">Listado de ciudades</h4>
+                <form [formGroup]="form" (ngSubmit)="buscarClima()">
+                  <input formControlName="cp" maxlength="4" type="text" class="form-control" placeholder="Codigo Postal" value="3100">
+                  <button [disabled]="this.form.invalid" type="submit" class="btn btn-success">Buscar</button>
+                </form>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-lg-4">
+        <div class="card ">
+          <div class="card-body">
+            <h4 class="card-title">Buscar Ciudades</h4>
+            <div class="table">
+                <tbody>
+                  <tr *ngFor="let ciudades of listCiudades">
+                    <td>{{ ciudades.nombre}}</td>
+                    <td>{{ ciudades.cp }}</td>
+                </tbody>
+            </div>
+          </div>
+        </div>
+    </div>
+
+<div class="col-lg-4">
+    <div class="card ">
+      <div *ngIf="wheather" class="card-body">
+        <h4 class="card-title">Vista del clima</h4>
+            <p class="card-text">Radar Meteorologia: {{wheather.name}}</p>
+            <p class="card-text">Temperatura: {{wheather.main.temp}}°C</p>
+            <p class="card-text">Humedad: {{wheather.main.humidity}}%</p>
+            <p class="card-text">Temperatura Max.: {{wheather.main.temp_max}}°C</p>
+            <p class="card-text">Temperatura Min: {{wheather.main.temp_min}}°C</p>
+            <p class="card-text">Estado: {{wheather.weather[0].description}}</p>
+      </div>
+    </div>
+</div>
+</div>

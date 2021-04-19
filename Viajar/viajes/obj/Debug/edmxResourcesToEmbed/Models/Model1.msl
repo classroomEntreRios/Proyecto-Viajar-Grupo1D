@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="userModelStoreContainer" CdmEntityContainer="userEntities">
+    <EntitySetMapping Name="usuarios">
+      <EntityTypeMapping TypeName="userModel.usuarios">
+        <MappingFragment StoreEntitySet="usuarios">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="epassword" ColumnName="epassword" />
+          <ScalarProperty Name="token" ColumnName="token" />
+          <ScalarProperty Name="fechaAlta" ColumnName="fechaAlta" />
+          <ScalarProperty Name="fechaBaja" ColumnName="fechaBaja" />
+          <ScalarProperty Name="tipoUsuario" ColumnName="tipoUsuario" />
+          <ScalarProperty Name="emailVerificado" ColumnName="emailVerificado" />
+          <ScalarProperty Name="imaPerfil" ColumnName="imaPerfil" />
+          <ScalarProperty Name="ultimaConexion" ColumnName="ultimaConexion" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
