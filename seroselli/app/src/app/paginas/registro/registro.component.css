@@ -1,0 +1,9 @@
+.formulario{
+    max-width: 50%;
+}
+.invalido{
+    color: red;
+}
+input.ng-invalid.ng-touched{
+    border-left: solid 2px red;
+}

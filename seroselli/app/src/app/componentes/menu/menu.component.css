@@ -1,0 +1,41 @@
+
+.itemsideNav1{
+    color: rgb(255, 255, 255); 
+    position: absolute; 
+    top: 20px;
+    left: 50px; 
+    text-shadow: 1px 1px 5px black;
+    text-decoration: none;
+    align-items: center;
+  }
+.itemsideNav2{
+    color: rgb(255, 255, 255);
+    position: absolute; 
+    top: 120px;
+    left: 50px; 
+    text-shadow: 1px 1px 5px black;
+    text-decoration: none;
+}
+.itemsideNav3{
+    color: rgb(255, 255, 255); 
+    position: absolute; 
+    top: 220px;
+    left: 50px; 
+    text-shadow: 1px 1px 5px black;
+    text-decoration: none;
+}
+.itemsideNav4{
+    color: rgb(255, 255, 255); 
+    position: absolute; 
+    top: 320px;
+    left: 50px; 
+    text-shadow: 1px 1px 5px black;
+    text-decoration: none;
+}
+
+.menu-bar{
+    background-color: #1d85b7;
+    width: 300px;
+    height: 800px;
+    padding: 10%;
+}

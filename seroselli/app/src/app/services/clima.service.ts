@@ -22,11 +22,11 @@ export class ClimaService {
   }
 
   
-  getWheather(cp: string): Observable<any> {
+  getWheather(cp: any): Observable<any> {
    // console.log(cp);
     //return this.http.get(this.uri+cp+','+'ar'+'&lang=es'+'&appid='+this.apikey+'&units=metric');//nuevo del wheater
    // return this.http.get(this.uri+cp+",ar&lang=es&appid="+this.apikey+"&units=metric");//nuevo del wheater
-    return this.http.get("http://api.openweathermap.org/data/2.5/weather?zip="+cp+",ar&lang=es&appid=beb72ec9bb9271574162dab5b8147a9c&units=metric");//nuevo del wheater
+   return this.http.get("https://api.openweathermap.org/data/2.5/weather?zip="+cp+",ar&lang=es&appid=beb72ec9bb9271574162dab5b8147a9c&units=metric");
   }
 
 }

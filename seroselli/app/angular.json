@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "18a17888-25ab-4b08-ab94-bbd9ba3379f1"
+    "analytics": "14cc3f56-19b9-4a6a-87ed-748b16f870d8"
   },
   "version": 1,
   "newProjectRoot": "projects",
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "../viajes/Bundles",
+            "outputPath": "../viajes/Bundles/",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -33,7 +33,8 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": ["src/assets/Js/scripts.js"
+             ]
           },
           "configurations": {
             "production": {

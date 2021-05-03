@@ -10,14 +10,9 @@ namespace viajes.Models.WS
     {
        
         public string nombre { get; set; }
+        public string apellido { get; set; }
         public string imaPerfil { get; set; }
+        public string email { get; set; }
         public string token { get; set; }
-
-        public Logueado()
-        {
-            nombre = "Iniciar Sesion";
-            imaPerfil = "";
-            token = "";
-        }
     }
 }

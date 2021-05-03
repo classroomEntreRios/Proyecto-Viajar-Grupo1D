@@ -1,0 +1,30 @@
+app-loginpanel{
+    position:absolute;
+    display: none;
+}
+app-perfilpanel{
+    position:absolute;
+    display: none;
+}
+
+app-navbar{
+    z-index: 1000!important;
+}
+app-dashboard{
+    position:absolute;
+    display: none;
+}
+ 
+router-outlet{
+    z-index: 900 !important;
+}
+
+app-footer{
+    z-index: 1000;
+
+}
+app-menu{
+    position:absolute;
+    z-index: 1000;
+    display: none;
+}

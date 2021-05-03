@@ -4,60 +4,233 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="userModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="viajarModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ciudades">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cantHab" Type="nvarchar" MaxLength="50" />
+          <Property Name="imaCiudad" Type="nvarchar" MaxLength="50" />
+          <Property Name="ultimaMod" Type="smalldatetime" />
+          <Property Name="descripcion" Type="text" />
+          <Property Name="cp" Type="int" />
+        </EntityType>
+        <EntityType Name="foro">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="titulo" Type="varchar(max)" Nullable="false" />
+          <Property Name="fechaCreacion" Type="date" Nullable="false" />
+          <Property Name="propietario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcion" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="foro_content">
+          <Key>
+            <PropertyRef Name="sub_id" />
+          </Key>
+          <Property Name="sub_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="fechaCreacion" Type="date" Nullable="false" />
+          <Property Name="comentario" Type="varchar(max)" Nullable="false" />
+          <Property Name="usuario" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="usuarios">
           <Key>
             <PropertyRef Name="email" />
           </Key>
-          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="nombre" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="apellido" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="epassword" Type="nchar" MaxLength="12" Nullable="false" />
-          <Property Name="token" Type="nchar" MaxLength="10" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombre" Type="varchar(max)" Nullable="false" />
+          <Property Name="apellido" Type="varchar(max)" Nullable="false" />
+          <Property Name="epassword" Type="varchar" MaxLength="68" Nullable="false" />
+          <Property Name="token" Type="varchar" MaxLength="36" Nullable="false" />
           <Property Name="fechaAlta" Type="smalldatetime" />
           <Property Name="fechaBaja" Type="smalldatetime" />
           <Property Name="tipoUsuario" Type="int" Nullable="false" />
           <Property Name="emailVerificado" Type="bit" />
-          <Property Name="imaPerfil" Type="nvarchar(max)" />
+          <Property Name="imaPerfil" Type="varchar" MaxLength="10" />
           <Property Name="ultimaConexion" Type="datetime" />
-          <Property Name="descripcion" Type="text" />
+          <Property Name="otrodato" Type="text" />
         </EntityType>
-        <EntityContainer Name="userModelStoreContainer">
+        <Association Name="FK_foro_content_foro">
+          <End Role="foro" Type="Self.foro" Multiplicity="1" />
+          <End Role="foro_content" Type="Self.foro_content" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="foro">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="foro_content">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_foro_content_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="foro_content" Type="Self.foro_content" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="foro_content">
+              <PropertyRef Name="usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="viajarModelStoreContainer">
+          <EntitySet Name="ciudades" EntityType="Self.ciudades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="foro" EntityType="Self.foro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="foro_content" EntityType="Self.foro_content" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_foro_content_foro" Association="Self.FK_foro_content_foro">
+            <End Role="foro" EntitySet="foro" />
+            <End Role="foro_content" EntitySet="foro_content" />
+          </AssociationSet>
+          <AssociationSet Name="FK_foro_content_usuarios" Association="Self.FK_foro_content_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="foro_content" EntitySet="foro_content" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="userModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="viajarModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ciudades">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cantHab" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="imaCiudad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ultimaMod" Type="DateTime" Precision="0" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="cp" Type="Int32" />
+        </EntityType>
+        <EntityType Name="foro">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fechaCreacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="propietario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="foro_content" Relationship="Self.FK_foro_content_foro" FromRole="foro" ToRole="foro_content" />
+        </EntityType>
+        <EntityType Name="foro_content">
+          <Key>
+            <PropertyRef Name="sub_id" />
+          </Key>
+          <Property Name="sub_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="fechaCreacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="foro" Relationship="Self.FK_foro_content_foro" FromRole="foro_content" ToRole="foro" />
+          <NavigationProperty Name="usuarios" Relationship="Self.FK_foro_content_usuarios" FromRole="foro_content" ToRole="usuarios" />
+        </EntityType>
         <EntityType Name="usuarios">
           <Key>
             <PropertyRef Name="email" />
           </Key>
-          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="apellido" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="epassword" Type="String" MaxLength="12" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="token" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="epassword" Type="String" MaxLength="68" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="token" Type="String" MaxLength="36" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fechaAlta" Type="DateTime" Precision="0" />
           <Property Name="fechaBaja" Type="DateTime" Precision="0" />
           <Property Name="tipoUsuario" Type="Int32" Nullable="false" />
           <Property Name="emailVerificado" Type="Boolean" />
-          <Property Name="imaPerfil" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="imaPerfil" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="ultimaConexion" Type="DateTime" Precision="3" />
-          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="otrodato" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="foro_content" Relationship="Self.FK_foro_content_usuarios" FromRole="usuarios" ToRole="foro_content" />
         </EntityType>
-        <EntityContainer Name="userEntities" annotation:LazyLoadingEnabled="true">
+        <Association Name="FK_foro_content_foro">
+          <End Role="foro" Type="Self.foro" Multiplicity="1" />
+          <End Role="foro_content" Type="Self.foro_content" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="foro">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="foro_content">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_foro_content_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="foro_content" Type="Self.foro_content" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="foro_content">
+              <PropertyRef Name="usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="viajarEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ciudades" EntityType="Self.ciudades" />
+          <EntitySet Name="foro" EntityType="Self.foro" />
+          <EntitySet Name="foro_content" EntityType="Self.foro_content" />
           <EntitySet Name="usuarios" EntityType="Self.usuarios" />
+          <AssociationSet Name="FK_foro_content_foro" Association="Self.FK_foro_content_foro">
+            <End Role="foro" EntitySet="foro" />
+            <End Role="foro_content" EntitySet="foro_content" />
+          </AssociationSet>
+          <AssociationSet Name="FK_foro_content_usuarios" Association="Self.FK_foro_content_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="foro_content" EntitySet="foro_content" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="userModelStoreContainer" CdmEntityContainer="userEntities">
+        <EntityContainerMapping StorageEntityContainer="viajarModelStoreContainer" CdmEntityContainer="viajarEntities">
+          <EntitySetMapping Name="ciudades">
+            <EntityTypeMapping TypeName="viajarModel.ciudades">
+              <MappingFragment StoreEntitySet="ciudades">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="cantHab" ColumnName="cantHab" />
+                <ScalarProperty Name="imaCiudad" ColumnName="imaCiudad" />
+                <ScalarProperty Name="ultimaMod" ColumnName="ultimaMod" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="cp" ColumnName="cp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="foro">
+            <EntityTypeMapping TypeName="viajarModel.foro">
+              <MappingFragment StoreEntitySet="foro">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+                <ScalarProperty Name="propietario" ColumnName="propietario" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="foro_content">
+            <EntityTypeMapping TypeName="viajarModel.foro_content">
+              <MappingFragment StoreEntitySet="foro_content">
+                <ScalarProperty Name="sub_id" ColumnName="sub_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+                <ScalarProperty Name="comentario" ColumnName="comentario" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="usuarios">
-            <EntityTypeMapping TypeName="userModel.usuarios">
+            <EntityTypeMapping TypeName="viajarModel.usuarios">
               <MappingFragment StoreEntitySet="usuarios">
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -70,7 +243,7 @@
                 <ScalarProperty Name="emailVerificado" ColumnName="emailVerificado" />
                 <ScalarProperty Name="imaPerfil" ColumnName="imaPerfil" />
                 <ScalarProperty Name="ultimaConexion" ColumnName="ultimaConexion" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="otrodato" ColumnName="otrodato" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

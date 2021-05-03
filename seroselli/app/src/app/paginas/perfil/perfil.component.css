@@ -1,0 +1,70 @@
+.perfil{
+    
+    height: 70vw;
+}
+.cuadrado {
+    max-width: 35%; 
+    height: auto;
+    border: 3px solid #555;
+    float: right;
+}
+
+.cuadrado-grande{
+    position:absolute;
+    width: 50%; 
+    height: 35vw; 
+    float: left;
+    padding: 5px;
+    padding-top: 1%;
+}
+
+input.ng-invalid.ng-touched{
+
+       border-bottom: solid 2px red; 
+
+  }
+@media only screen and (max-width: 660px) {
+    .perfil{
+        position: relative;
+        height: auto;
+    }
+    .cuadrado {
+        position:relative;
+        max-width: 100%; 
+        height: auto; 
+        border: 3px solid #555;
+        float: right;
+    }   
+    .cuadrado-grande{
+        position:relative;
+        top: 2vw;
+        width: 100%; 
+        height: 50vw; 
+        float: left;
+        padding-top: 0%;
+    }
+
+}
+
+@media only screen and (max-width: 660px) {
+    .perfil{
+        position: relative;
+        min-height: 700px;
+    }
+    .cuadrado {
+        position:relative;
+        max-width: 100%; 
+        height: auto; 
+        border: 3px solid #555;
+        float: right;
+    }   
+    .cuadrado-grande{
+        position:relative;
+        top: 2vw;
+        width: 100%; 
+        height: 50vw; 
+        float: left;
+        padding-top: 0%;
+    }
+
+}

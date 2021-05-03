@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="userModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'user.dbo.Chat' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Chat">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="nLinea" />
+      <PropertyRef Name="fecha" />
+      <PropertyRef Name="OrigenVisitante" />
+    </Key>
+    <Property Name="id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="nLinea" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="fecha" Type="date" Nullable="false" />
+    <Property Name="OrigenVisitante" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ciudades">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="cantHab" Type="nvarchar" MaxLength="50" />
+    <Property Name="imaCiudad" Type="nvarchar" MaxLength="50" />
+    <Property Name="ultimaMod" Type="smalldatetime" />
+    <Property Name="descripcion" Type="text" />
+    <Property Name="cp" Type="int" />
+  </EntityType>
+  <EntityType Name="usuarios">
+    <Key>
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="nombre" Type="varchar(max)" Nullable="false" />
+    <Property Name="apellido" Type="varchar(max)" Nullable="false" />
+    <Property Name="epassword" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="token" Type="varchar" MaxLength="36" Nullable="false" />
+    <Property Name="fechaAlta" Type="smalldatetime" />
+    <Property Name="fechaBaja" Type="smalldatetime" />
+    <Property Name="tipoUsuario" Type="int" Nullable="false" />
+    <Property Name="emailVerificado" Type="bit" />
+    <Property Name="imaPerfil" Type="varchar" MaxLength="10" />
+    <Property Name="ultimaConexion" Type="datetime" />
+    <Property Name="otrodato" Type="text" />
+  </EntityType>
+  <EntityContainer Name="userModel1StoreContainer">
+    <EntitySet Name="ciudades" EntityType="Self.ciudades" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Chat" EntityType="Self.Chat" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Chat].[id] AS [id], 
+    [Chat].[nLinea] AS [nLinea], 
+    [Chat].[fecha] AS [fecha], 
+    [Chat].[OrigenVisitante] AS [OrigenVisitante]
+    FROM [dbo].[Chat] AS [Chat]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

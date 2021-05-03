@@ -1,15 +1,7 @@
-
-<app-navbar style="z-index: 2;top: 0px;" [usuarioNavbar]="usuario"></app-navbar>
-
-<app-login-panel style="z-index: 2!important;" (eventoUsuario)="refreshUsuario($event)" ></app-login-panel>
-
-<div style="z-index: 0;">
-  <app-dashboard style="z-index: 5"></app-dashboard>
-  <router-outlet></router-outlet>
-  <app-footer></app-footer>
-</div>
-
-
-
-
-
+<app-navbar [logueo]="logged" (btnMenu)="cambiosBtnMenu($event)" (btnAcceder)="cambiosBtnAcceder($event)"></app-navbar>
+<app-loginpanel (usuarioLogueado)="recibirEvento($event)" (cerrarLogin)="cambiosBtnAcceder($event)" *ngIf="btnLogin"></app-loginpanel>
+<app-perfilpanel (usuarioLogueado)="recibirEvento($event)" (cerrarPerfil)="cambiosBtnAcceder($event)" *ngIf="!btnLogin"></app-perfilpanel>
+<app-menu id="menu" *ngIf="btnMenu"></app-menu>
+<app-dashboard *ngIf="!btnMenu"></app-dashboard>
+<router-outlet></router-outlet>
+<app-footer></app-footer>

@@ -1,0 +1,37 @@
+<div class="container-fluid">
+    <form class="form-control formulario mx-auto my-3" [formGroup]="formRegistro" (ngSubmit)="onSubmit()">
+        
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" formControlName="nombre">
+            <div *ngIf="formRegistro.controls['nombre'].invalid && formRegistro.controls['nombre'].touched"  class="invalido">El nombre es necesario</div>
+          </div>
+          <div class="mb-3">
+          <label for="apellido" class="form-label">Apellido</label>
+          <input type="text" class="form-control" id="apellido" formControlName="apellido">
+          <div *ngIf="formRegistro.controls['apellido'].invalid && formRegistro.controls['apellido'].touched"  class="invalido">El apellido es necesario</div>
+        </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Correo electrónico:</label><div *ngIf="formRegistro.controls['email'].invalid && formRegistro.controls['email'].touched " class="invalido">Ingrese una dirección de correo válido</div>
+            
+            <div class="input-group">
+                <input type="text" class="form-control" id="email" formControlName="email" (keyup)="validationEmail()">
+            </div>
+            <div *ngIf="yaregistrado" class="mt-3">Este correo ya esta registrado <a [routerLink]="'/inicio'" class="link-success"> Recuperar contraseña</a></div>
+          </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" formControlName="password">
+          <div *ngIf="formRegistro.controls['password'].invalid && formRegistro.controls['password'].touched" class="invalido">La contraseña no cumple con los requisitos</div>
+        </div>
+        <div class="mb-4 form-check">
+          <input type="checkbox" class="form-check-input" id="checkbox" formControlName="checkbox" required>
+          <label class="form-check-label" for="checkbox">Acepto términos, condiciones y uso de Cookies de este sitio</label>
+        </div>
+        <div class="mx-auto d-grid">
+            <button type="submit" class="btn btn-secondary" [disabled]="formRegistro.invalid && !yaregistrado">Registrarse</button>
+            <div class="spinner-border" role="status" *ngIf="botonSpin"></div>
+        </div>
+        
+      </form>
+</div>

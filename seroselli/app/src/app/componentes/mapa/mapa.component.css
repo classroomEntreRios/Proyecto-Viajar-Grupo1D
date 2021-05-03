@@ -1,0 +1,22 @@
+.mapa{
+    width: 40%;
+}
+a{
+    text-decoration: none;
+    color: black;
+    position: relative;
+}
+a:hover{
+    color: white;
+    text-shadow: 2px 2px 4px #257376;
+}
+
+.mapa path:hover{
+    fill:#6d9f47
+}
+.mapa path{
+    fill:#257376;
+    stroke: black;
+    stroke-width: 4px;
+    transition: fill 0.3s;
+}

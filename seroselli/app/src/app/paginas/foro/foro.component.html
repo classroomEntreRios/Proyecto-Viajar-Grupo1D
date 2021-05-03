@@ -1,1 +1,20 @@
-<p>foro works!</p>
+<div class="container-fluid" style="background-color: rgb(241, 241, 232);">
+    <div class="row mt-3">
+        <div class="col-auto"></div>
+        <div class="col-7">
+            <div class="row" *ngFor="let foro of foros">
+                <div class="col" style="border-right: solid 1px black;">#id</div>
+                <div class="col"  style="border-right: solid 1px black;">Titulo</div>
+                <div class="col"  style="border-right: solid 1px black;">Descripcion</div>
+                <div class="col">Creador</div>
+            </div>
+            <div class="row my-1" *ngFor="let foro of foros">
+                <div class="col" style="border-right: solid 1px black;">{{foro.id}}</div>
+                <div class="col"  style="border-right: solid 1px black;">{{foro.titulo}}</div>
+                <div class="col"  style="border-right: solid 1px black;">{{foro.descripcion}}</div>
+                <div class="col">{{foro.propietario}}</div>
+            </div>
+        </div>
+        <div class="col-auto"></div>
+    </div>
+</div>

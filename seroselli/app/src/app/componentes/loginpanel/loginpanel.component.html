@@ -1,51 +1,40 @@
-<div class="login-panel oculto" ngstyle="logeado" id="loginPanel">
+<form class="form-floating bg-light float-end rounded-3 p-3" [formGroup]="formLoginVal" (ngSubmit)="onSubmit()" style="position: absolute; right: 0px;">
 
-  <div class="oscurecer-fondo"></div>
+    <h3>Iniciar Sesión</h3>
 
-  <div class="panel">
- 
-        <h5>Iniciar sesión</h5>
+    <div class="form-floating mb-3">
+        <input class="form-control" type="email" id="uemail" name="uemail" formControlName="uemail" value="">
+        <label for="uemail" >Correo Electrónico: </label>
+    </div>
 
-        <form #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
-
-          <div class="form-group">
-            <label>Correo:</label>
-            <input type="email" class="form-control" name="uemail" #uemail="ngModel" ngModel (ngModel)="usuario.formLog.uemail" placeholder=" correo@correo.com" required>
-          </div>
-
-          <div class="form-group">
-            <label >Contraseña:</label>
-            <input type="password" class="form-control" name="epassword" ngModel #epassword="ngModel" (ngModel)="usuario.formLog.epassword" placeholder="*********" required>
-          </div>
-
-          <!-- <div class="form-group form-check">
-            <label class="form-check-label">
-              <input class="form-check-input" type="checkbox" name="remember">Recordarme
-            </label>
-          </div> -->
-
-          <button type="submit" class="btn btn-primary" id="botonAcceder" style="width: 100%;">Acceder</button>
-        </form> 
-
-          <hr>
-         <a href="/registro" class="btn btn-outline-light">Registrarse</a>  
-         <div class="alert {{notificacion}}"  role="alert">
-          {{mensaje}}
+    <div class="input-group mb-3">
+        <div class="form-floating">
+            <input class="form-control" type="{{eye}}" id="epassword" name="epassword" formControlName="epassword" value=""> 
+            <label for="epassword" >Contraseña:</label> 
         </div>
+        <button type="button" class="btn btn-outline-secondary" (click)="eyefilter()"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M12.015 7c4.751 0 8.063 3.012 9.504 4.636-1.401 1.837-4.713 5.364-9.504 5.364-4.42 0-7.93-3.536-9.478-5.407 1.493-1.647 4.817-4.593 9.478-4.593zm0-2c-7.569 0-12.015 6.551-12.015 6.551s4.835 7.449 12.015 7.449c7.733 0 11.985-7.449 11.985-7.449s-4.291-6.551-11.985-6.551zm-.015 3c-2.21 0-4 1.791-4 4s1.79 4 4 4c2.209 0 4-1.791 4-4s-1.791-4-4-4zm-.004 3.999c-.564.564-1.479.564-2.044 0s-.565-1.48 0-2.044c.564-.564 1.479-.564 2.044 0s.565 1.479 0 2.044z"/></svg></button>
+        <div *ngIf="formLoginVal.hasError('required')">Falta la contraseña</div>
+        <div *ngIf="formLoginVal.hasError('minLength')">El mínimo es de 8 caracteres</div>
+        <div *ngIf="formLoginVal.hasError('maxLength')">El máximo es de 12 caracteres</div>
+    </div>
+    <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" value="" id="recordarme" [formControl]="recordarme" checked>
+        <label class="form-check-label" for="recordarme">
+          Checked checkbox
+        </label>
+      </div>
+      <div class="row g-3 mb-3">
+          <div class="col-auto">
+            <a class="form-control" href="" id="registrarse" class="ocultarPaneles" (click)="toRegistro()">Registrarse</a>
+          </div>
+          <div class="col-auto">
+            <button  class="btn btn-outline-secondary" id="botonLogin" type="submit" #button [disabled]="!formLoginVal.valid">Acceder</button>
+          </div>
+      </div>
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status" *ngIf="botonSpin"></div>
+        <div>{{respuestaPost}}</div>
+      </div>
+</form>
 
-
-  </div>
-
-</div>
-
-<div class="perfilOptions oculto" id="perfilOptions">
-  <tr><a class="item" href="#">Perfil</a></tr>
-  <tr><a class="item" href="#">Mis Actividades</a></tr>
-  <tr><a class="item" href="#">Mis Publicaciones</a></tr>
-  <hr>
-  <tr><a class="item" href="#">Cerrar Sesión</a></tr>
-  
-  
-  
-</div>
 

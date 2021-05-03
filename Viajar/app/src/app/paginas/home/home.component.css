@@ -1,0 +1,73 @@
+.parallax {
+    /* The image used */
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/d/de/Atardecer-RioParana-Candelaria-Misiones.jpg");
+    margin: 0px;
+    padding: 0px;
+    /* Set a specific height */
+    min-height: 800px; 
+  
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .parallax2{
+    /* The image used */
+    background-image: url("https://d35hsl9am8s2ta.cloudfront.net/public/images/2020/09/16012432080-5-cosas-que-no-sabas-del-ro-Paran-773x458.jpg");
+    margin: 0px;
+    padding: 0px;
+    /* Set a specific height */
+    min-height: 500px; 
+  
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  div.nota{
+    background-color: rgba(101, 216, 191, 0.329); 
+    border-radius: 10px; 
+    position: absolute; 
+    width: 20vw; 
+    height: auto; 
+    font-size: 1.2vw; 
+    padding: 1vw; 
+    right: 10vw; 
+    top: 450px;
+    color: white;
+  }
+
+  img.nota{
+    max-height: 12vw; 
+    position: absolute; 
+    top: 600px; 
+    right: 25%;
+  }
+
+  @media only screen and (max-width: 700px) {
+
+    img.nota{
+      height: 22vw; 
+      position: absolute; 
+      top: 600px; 
+      right: 25%;
+    }
+    div.nota{
+      background-color: rgba(101, 216, 191, 0.329); 
+      border-radius: 10px; 
+      position: absolute; 
+      top: 112px;
+      left: 0;
+      width: 90%; 
+      height: auto; 
+      font-size: 5vw; 
+      margin-top: 50px;
+      margin-left: 5%;
+      margin-right: 5%;
+      color: white;
+    }
+
+  }

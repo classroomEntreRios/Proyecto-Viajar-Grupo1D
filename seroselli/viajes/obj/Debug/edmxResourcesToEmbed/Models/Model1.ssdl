@@ -1,23 +1,90 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="userModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="viajarModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ciudades">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="cantHab" Type="nvarchar" MaxLength="50" />
+    <Property Name="imaCiudad" Type="nvarchar" MaxLength="50" />
+    <Property Name="ultimaMod" Type="smalldatetime" />
+    <Property Name="descripcion" Type="text" />
+    <Property Name="cp" Type="int" />
+  </EntityType>
+  <EntityType Name="foro">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="titulo" Type="varchar(max)" Nullable="false" />
+    <Property Name="fechaCreacion" Type="date" Nullable="false" />
+    <Property Name="propietario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="descripcion" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="foro_content">
+    <Key>
+      <PropertyRef Name="sub_id" />
+    </Key>
+    <Property Name="sub_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="fechaCreacion" Type="date" Nullable="false" />
+    <Property Name="comentario" Type="varchar(max)" Nullable="false" />
+    <Property Name="usuario" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityType Name="usuarios">
     <Key>
       <PropertyRef Name="email" />
     </Key>
-    <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="nombre" Type="nchar" MaxLength="50" Nullable="false" />
-    <Property Name="apellido" Type="nchar" MaxLength="50" Nullable="false" />
-    <Property Name="epassword" Type="nchar" MaxLength="12" Nullable="false" />
-    <Property Name="token" Type="nchar" MaxLength="10" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="nombre" Type="varchar(max)" Nullable="false" />
+    <Property Name="apellido" Type="varchar(max)" Nullable="false" />
+    <Property Name="epassword" Type="varchar" MaxLength="68" Nullable="false" />
+    <Property Name="token" Type="varchar" MaxLength="36" Nullable="false" />
     <Property Name="fechaAlta" Type="smalldatetime" />
     <Property Name="fechaBaja" Type="smalldatetime" />
     <Property Name="tipoUsuario" Type="int" Nullable="false" />
     <Property Name="emailVerificado" Type="bit" />
-    <Property Name="imaPerfil" Type="nvarchar(max)" />
+    <Property Name="imaPerfil" Type="varchar" MaxLength="10" />
     <Property Name="ultimaConexion" Type="datetime" />
-    <Property Name="descripcion" Type="text" />
+    <Property Name="otrodato" Type="text" />
   </EntityType>
-  <EntityContainer Name="userModelStoreContainer">
+  <Association Name="FK_foro_content_foro">
+    <End Role="foro" Type="Self.foro" Multiplicity="1" />
+    <End Role="foro_content" Type="Self.foro_content" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="foro">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="foro_content">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_foro_content_usuarios">
+    <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+    <End Role="foro_content" Type="Self.foro_content" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="foro_content">
+        <PropertyRef Name="usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="viajarModelStoreContainer">
+    <EntitySet Name="ciudades" EntityType="Self.ciudades" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="foro" EntityType="Self.foro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="foro_content" EntityType="Self.foro_content" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_foro_content_foro" Association="Self.FK_foro_content_foro">
+      <End Role="foro" EntitySet="foro" />
+      <End Role="foro_content" EntitySet="foro_content" />
+    </AssociationSet>
+    <AssociationSet Name="FK_foro_content_usuarios" Association="Self.FK_foro_content_usuarios">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="foro_content" EntitySet="foro_content" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

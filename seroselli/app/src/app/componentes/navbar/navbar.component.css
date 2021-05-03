@@ -1,35 +1,40 @@
 .colorbar1{
-  position: relative;
-  height: 12px;
-  width: 25%;
-  left: 0%;
-  background-color: #1d85b7;
-  z-index: 1;
-}
-.colorbar2{
-  position: relative;
-  height: 12px;
-  width: 25%;
-  top: -12px;
-  left: 25%;
-  background-color: #257376;
-  z-index: 1;
-}
-.colorbar3{
-  position: relative;
-  height: 12px;
-  top: -24px;
-  width: 25%;
-  left: 50%;
-  background-color: #6d9f47;
-  z-index: 1;
-}
-.colorbar4{
-  position: relative;
-  height: 12px;
-  top: -36px;
-  width: 25%;
-  left: 75%;
-  background-color: #567b86;
-  z-index: 1;
-}
+    position: relative;
+    height: 12px;
+    width: 25%;
+    left: 0%;
+    background-color: #1d85b7;
+    z-index: 1000;
+  }
+  .colorbar2{
+    position: relative;
+    height: 12px;
+    width: 25%;
+    top: -12px;
+    left: 25%;
+    background-color: #257376;
+    z-index: 1000;
+  }
+  .colorbar3{
+    position: relative;
+    height: 12px;
+    top: -24px;
+    width: 25%;
+    left: 50%;
+    background-color: #6d9f47;
+    color: white;
+    z-index: 1000;
+  }
+  .colorbar4{
+    position: relative;
+    height: 12px;
+    top: -36px;
+    width: 25%;
+    left: 75%;
+    background-color: #567b86;
+    z-index: 1000;
+  }
+  
+  app-menu{
+      display: none;
+  }

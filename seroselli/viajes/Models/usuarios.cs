@@ -14,6 +14,12 @@ namespace viajes.Models
     
     public partial class usuarios
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public usuarios()
+        {
+            this.foro_content = new HashSet<foro_content>();
+        }
+    
         public string email { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }
@@ -25,6 +31,9 @@ namespace viajes.Models
         public Nullable<bool> emailVerificado { get; set; }
         public string imaPerfil { get; set; }
         public Nullable<System.DateTime> ultimaConexion { get; set; }
-        public string descripcion { get; set; }
+        public string otrodato { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<foro_content> foro_content { get; set; }
     }
 }

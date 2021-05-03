@@ -1,0 +1,15 @@
+
+<app-navbar style="z-index: 2;top: 0px;" [usuarioNavbar]="usuario"></app-navbar>
+
+<app-login-panel style="z-index: 2!important;" (eventoUsuario)="refreshUsuario($event)" ></app-login-panel>
+
+<div style="z-index: 0;">
+  <app-dashboard style="z-index: 5"></app-dashboard>
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
+</div>
+
+
+
+
+

@@ -1,0 +1,48 @@
+<div class="container-fluid perfil mx-auto">
+  <div class="row mx-auto"><div class="spinner-border" role="status" *ngIf="botonSpin"></div></div>
+    <div class="row h-100">
+      <div class="col-1 p-3 h-100"></div>
+      <div class="col-10 p-3 h-100"> 
+          <div class="cuadrado bg-dark" ><!--foto de perfil-->
+            <svg #imaperfil [style.color]="this.color" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M19 7.001c0 3.865-3.134 7-7 7s-7-3.135-7-7c0-3.867 3.134-7.001 7-7.001s7 3.134 7 7.001zm-1.598 7.18c-1.506 1.137-3.374 1.82-5.402 1.82-2.03 0-3.899-.685-5.407-1.822-4.072 1.793-6.593 7.376-6.593 9.821h24c0-2.423-2.6-8.006-6.598-9.819z"/></svg>
+            <button type="button" [(colorPicker)]="this.color" [style.background-color]="this.color" style="height: 30px; width: 50px"></button><label>← Cambia el color</label>
+          </div>
+          <div class="cuadrado-grande"><!--info de perfil-->
+            <form class="form-floating" [formGroup]="formEditar">
+                <div class="form-floating">
+                    <input class="form-control" #email [value]="usuarioLogueado.email" readonly>
+                    <label for="email">Correo Electrónico</label>
+                  </div>
+                <div class="form-floating">
+                    <input class="form-control" id="nombre" formControlName="nombre" [readonly]="edite">
+                    <label for="nombre">Nombre</label>
+                    <div *ngIf="formEditar.controls['nombre'].invalid&&formEditar.touched">Debe contener entre 3 y 20 letras</div>
+                  </div>
+                <div class="form-floating">
+                    <input class="form-control" id="apellido" formControlName="apellido" [readonly]="edite">
+                    <label for="apellido" >Apellido</label>
+                    <div *ngIf="formEditar.controls['apellido'].invalid&&formEditar.touched">Debe contener entre 3 y 20 letras</div>
+                  </div>
+                <div class="form-floating">
+                    <textarea class="form-control" id="informacion" style="max-height: 150px" formControlName="otrodato" [readonly]="edite"></textarea>
+                    <label for="informacion">Información</label>
+                  </div>  
+            </form>
+                  <hr class="solid">
+                  <form [formGroup]="formPassword">
+                      <label for="epassword">Ingrese contraseña para confirmar</label>
+                      <input class="form-control" id="epassword" type="password" formControlName="epassword" [readonly]="edite">
+                      <div *ngIf="PassIncorrecta">Contraseña incorrecta</div>
+                  </form>
+
+                  <hr class="solid">
+                  <div class="btn-group mx-auto float-mid">
+                  <button class="btn btn-warning" type="button" (click)="edite=false">Editar</button>
+                  <button class="btn btn-outline-secondary" type="button" (click)="onSubmit()" [disabled]="edite&&!formEditar.invalid">Guardar</button>
+                  </div>
+
+          </div>
+      </div>
+      <div class="col-1 p-3 h-100"></div>   
+    </div>
+  </div>

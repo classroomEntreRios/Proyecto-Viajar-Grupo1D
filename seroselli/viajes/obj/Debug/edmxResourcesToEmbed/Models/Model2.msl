@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="userModel1StoreContainer" CdmEntityContainer="userEntities1">
+  <EntityContainerMapping StorageEntityContainer="userModel2StoreContainer" CdmEntityContainer="userEntities1">
     <EntitySetMapping Name="ciudades">
-      <EntityTypeMapping TypeName="userModel1.ciudades">
+      <EntityTypeMapping TypeName="userModel2.ciudades">
         <MappingFragment StoreEntitySet="ciudades">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />

@@ -15,13 +15,15 @@ namespace viajes.Controllers
     public class climaController : ApiController
     {
         //private userEntities1 db = new userEntities1();
-        readonly userEntities1 db = new userEntities1();
+        public readonly viajarEntities db = new viajarEntities();
         [HttpGet]
 
         // GET: clima
         public List<ciudades> listadoCiudades()
         {
-            List<ciudades> listado = db.ciudades.ToList();
+
+            List<ciudades> listado = db.ciudades.Take(16).ToList();
+
             return listado;
         }
 

@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="userModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="userModel2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="ciudades">
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="id" Type="int" Nullable="false" />
     <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="cantHab" Type="nvarchar" MaxLength="50" />
     <Property Name="imaCiudad" Type="nvarchar" MaxLength="50" />
@@ -12,7 +12,7 @@
     <Property Name="descripcion" Type="text" />
     <Property Name="cp" Type="int" />
   </EntityType>
-  <EntityContainer Name="userModel1StoreContainer">
+  <EntityContainer Name="userModel2StoreContainer">
     <EntitySet Name="ciudades" EntityType="Self.ciudades" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

@@ -1,58 +1,71 @@
-import { Usuario, LogUsuario, Logueado } from './../../models/usuario.model';
-import { UsuariosService } from './../../services/usuarios.service';
-import { Component, OnInit, Output , EventEmitter } from '@angular/core';
-import { FormControl, NgForm, NgModel } from '@angular/forms';
-import {Router} from '@angular/router';
- 
+import { AuthService } from './../../services/auth.Service';
+import { Logueado } from './../../models/usuario.model';
+import { LoginService } from './../../services/login.service';
+import { FormControl, ReactiveFormsModule, FormGroup, FormBuilder, Validators, CheckboxControlValueAccessor } from '@angular/forms';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
+
 @Component({
-  selector: 'app-login-panel',
+  selector: 'app-loginpanel',
   templateUrl: './loginpanel.component.html',
   styleUrls: ['./loginpanel.component.css']
 })
-export class LoginPanelComponent implements OnInit {
+export class LoginpanelComponent implements OnInit {
 
-  notificacion : string = "oculto";
-  mensaje : string;
-  logeado : any = {display: "none"};
+  @Output() usuarioLogueado = new EventEmitter<string>();
+  @Output() cerrarLogin = new EventEmitter<boolean>();
+  formLoginVal = this.fb.group({
+    uemail: ['', [Validators.required, Validators.email, Validators.minLength(8)]],
+    epassword: ['', [Validators.required,Validators.minLength(8), Validators.maxLength(12)]],
+  })
+  recordarme = new FormControl();
+  botonSpin : boolean = false;
+  respuestaPost = "";
+  eye : string = "password";
 
-  @Output() eventoUsuario = new EventEmitter<Logueado>();
-
-  constructor(public usuario :  UsuariosService) { }
+  constructor(private login : LoginService, private fb : FormBuilder, private auth: AuthService, private router : Router) { }
 
   ngOnInit(): void {
-      }
-  resetForm(form : NgForm) {
-    if(form.value != null){
-    this.usuario.formLog ={
-        uemail : '',
-        epassword : ''
-      }
-
-    }
-
+      
   }
-  onSubmit(form : NgForm){
-    this.insertRecord(form);
+
+  eyefilter(){
+    if(this.eye == "password")
+    this.eye = "text";
+    else
+    this.eye = "password";
+  }
+
+  toRegistro(){
+    this.cerrarLogin.emit(true);
+    this.router.navigate(['/registro']);
+  }
+
+  onSubmit(){
+    this.botonSpin = true;
+    this.login.loginUsuario(this.formLoginVal.value).subscribe(data=>{ // devuelve 3 estados, email_err, pass_err, datos del usuario
+      switch(data){
+        case "emailErr":
+          this.respuestaPost = "Correo no encontrado";
+          break;
+        case "passErr":
+          this.respuestaPost = "Contraseña incorrecta";
+          break;
+        default:
+          if(this.recordarme.value){
+            this.auth.setLocalToken(data);
+            this.auth.setSessionToken(data);
+          }
+          else{
+            this.auth.setSessionToken(data);
+          }
+          data = "logged";
+          break;
       }
-  
-  insertRecord(form : NgForm){
-   this.usuario.postUsuarioLog(form.value).subscribe( res => {
-     if(res == 0){
-      this.mensaje="Email no registrado";
-       this.notificacion="alert-danger visible"
-     }
-     if(res == 1){
-      this.mensaje="Contraseña incorrecta";
-      this.notificacion="alert-danger visible"
-    }
-    if(res == 2){
-      this.mensaje="Logeado correctamente";
-      this.notificacion="alert-success visible"
-    }
+      this.botonSpin = false;
+      this.formLoginVal.reset();
+      this.usuarioLogueado.emit(data);
+    })
+  }
 
-    this.usuario.getUsuarioLog().subscribe(data => this.eventoUsuario.emit(data));
-        
-  })
-
-}
 }

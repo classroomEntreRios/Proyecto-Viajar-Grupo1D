@@ -13,10 +13,10 @@ namespace viajes.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class userEntities : DbContext
+    public partial class viajarEntities : DbContext
     {
-        public userEntities()
-            : base("name=userEntities")
+        public viajarEntities()
+            : base("name=viajarEntities")
         {
         }
     
@@ -25,6 +25,9 @@ namespace viajes.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<ciudades> ciudades { get; set; }
+        public virtual DbSet<foro> foro { get; set; }
+        public virtual DbSet<foro_content> foro_content { get; set; }
         public virtual DbSet<usuarios> usuarios { get; set; }
     }
 }

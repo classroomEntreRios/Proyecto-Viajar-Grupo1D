@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="chatModel1StoreContainer" CdmEntityContainer="chatEntities">
+    <EntitySetMapping Name="Chat">
+      <EntityTypeMapping TypeName="chatModel1.Chat">
+        <MappingFragment StoreEntitySet="Chat">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nLinea" ColumnName="nLinea" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="OrigenVisitante" ColumnName="OrigenVisitante" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

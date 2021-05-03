@@ -1,8 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="userModelStoreContainer" CdmEntityContainer="userEntities">
+  <EntityContainerMapping StorageEntityContainer="viajarModelStoreContainer" CdmEntityContainer="viajarEntities">
+    <EntitySetMapping Name="ciudades">
+      <EntityTypeMapping TypeName="viajarModel.ciudades">
+        <MappingFragment StoreEntitySet="ciudades">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="cantHab" ColumnName="cantHab" />
+          <ScalarProperty Name="imaCiudad" ColumnName="imaCiudad" />
+          <ScalarProperty Name="ultimaMod" ColumnName="ultimaMod" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="cp" ColumnName="cp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="foro">
+      <EntityTypeMapping TypeName="viajarModel.foro">
+        <MappingFragment StoreEntitySet="foro">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+          <ScalarProperty Name="propietario" ColumnName="propietario" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="foro_content">
+      <EntityTypeMapping TypeName="viajarModel.foro_content">
+        <MappingFragment StoreEntitySet="foro_content">
+          <ScalarProperty Name="sub_id" ColumnName="sub_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+          <ScalarProperty Name="comentario" ColumnName="comentario" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="usuarios">
-      <EntityTypeMapping TypeName="userModel.usuarios">
+      <EntityTypeMapping TypeName="viajarModel.usuarios">
         <MappingFragment StoreEntitySet="usuarios">
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -15,7 +50,7 @@
           <ScalarProperty Name="emailVerificado" ColumnName="emailVerificado" />
           <ScalarProperty Name="imaPerfil" ColumnName="imaPerfil" />
           <ScalarProperty Name="ultimaConexion" ColumnName="ultimaConexion" />
-          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="otrodato" ColumnName="otrodato" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

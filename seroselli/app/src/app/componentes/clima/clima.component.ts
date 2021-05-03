@@ -1,3 +1,4 @@
+import { CityModel } from './../../models/ciudad.model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClimaService } from 'src/app/services/clima.service';
@@ -10,55 +11,46 @@ import { ClimaService } from 'src/app/services/clima.service';
 })
 export class ClimaComponent implements OnInit {
 
-  listCiudades: any[] = [];
-  wheather;
-  cp;
-  cp_i;
+  listCiudades: CityModel[];
+  ciudada : any ;
+  wheather: any;
+  cp: any;
 
-  form: FormGroup;
-  constructor(private fb: FormBuilder, 
-    private _climaService: ClimaService) { 
-    this.form = this.fb.group({
-      cp:['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
-    })
+
+
+  constructor(private climaService: ClimaService) { 
+
   }
- 
-
-  ngOnInit(): void {
+   ngOnInit(): void {
    //this.cp='3100';
    this.obtenerCiudades();
    //this.buscarClima();
   }
 
   obtenerCiudades(){
-    this._climaService.geListCiudades().subscribe(data => {
-      console.log(data);
+    this.climaService.geListCiudades().subscribe(data => {
       this.listCiudades=data;
-    }, error => {
-      console.log(error);
-    
     })
+  }
+  buscarCP(){
+
+    for(let i=0; i<this.listCiudades.length;i++){
+      if(this.listCiudades[i].nombre == this.ciudada){
+        this.cp = this.listCiudades[i].cp;
+        i=this.listCiudades.length + 1;
+      }
+    }
+    this.buscarClima();
   }
 
   buscarClima(){
-    console.log(this.form);
-    const cp: any = {
-      cp: this.form.get('cp')?.value
-
-    }
-    
-    
-
-    const newVal = this.form.get('cp')?.value;
-    this._climaService.getWheather(newVal).subscribe(datos => {
+    const newVal = this.cp;
+    console.log("CP: "+newVal);
+    this.climaService.getWheather(newVal).subscribe(datos => {
       this.wheather=datos;
+      console.log("Datos: "+ this.wheather.name);
     })
-
-    this.form.reset();
-    
-    
   }
 
-  
 
 }
